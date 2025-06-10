@@ -5,10 +5,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     },
     "verbatimModuleSyntax": true,
-  },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
 }
