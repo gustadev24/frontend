@@ -1,4 +1,4 @@
-import { Link } from '@/components/ui/link';
+import { Link } from '@/modules/core/ui/link';
 
 interface CourseProps {
   title: string;

@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@/modules/core/lib/utils';
 import type { ComponentProps } from 'react';
 
 type InputProps = ComponentProps<'input'>;
