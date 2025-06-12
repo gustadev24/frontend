@@ -8,31 +8,33 @@ import { Link } from '@/components/ui/link';
 <Layout>
   <main class="flex flex-col gap-12 items-center mt-10">
     <h1 class="font-bold text-3xl">Welcome back</h1>
-    <form class="flex flex-col gap-8 items-start">
-      <p class="flex flex-col gap-2 items-start">
+    <form class="flex flex-col gap-8 w-full px-8 max-w-3xl">
+      <p class="flex flex-col gap-2">
         <Label client:load htmlFor="email">
           Email
         </Label>
         <Input type="email" name="email" placeholder="Enter your email" />
       </p>
-      <p class="flex flex-col gap-2 items-start">
+      <p class="flex flex-col gap-2">
         <Label client:load htmlFor="password">
           Password
         </Label>
         <Input type="password" name="password" placeholder="Enter your password" />
       </p>
-      <p class="flex flex-col gap-2 items-start">
+      <p class="flex flex-col gap-2">
         <Label client:load htmlFor="code">
           MFA Code
         </Label>
         <Input name="code" placeholder="Enter your MFA code" />
       </p>
-      <Button className="w-full">
-        Login
-      </Button>
-      <Link variant="ghost" className="self-center">
-        Forgot your password?
-      </Link>
+      <p class="flex flex-col gap-2">
+        <Button className="w-full">
+          Login
+        </Button>
+        <Link variant="ghost">
+          Forgot your password?
+        </Link>
+      </p>
     </form>
   </main>
 </Layout>
