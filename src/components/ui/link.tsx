@@ -15,7 +15,7 @@ function Link({
       asChild
       variant={variant}
       size={size}
-      className={cn('text-sm font-medium', className)}
+      className={cn('text-sm font-medium py-1', className)}
     >
       <a {...props}>{children}</a>
     </Button>
