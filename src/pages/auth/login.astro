@@ -13,19 +13,19 @@ import { Link } from '@/components/ui/link';
         <Label htmlFor="email">
           Email
         </Label>
-        <Input type="email" name="email" placeholder="Enter your email" />
+        <Input type="email" id="email" name="email" placeholder="Enter your email" autoComplete="email" />
       </p>
       <p class="flex flex-col gap-2">
         <Label htmlFor="password">
           Password
         </Label>
-        <Input type="password" name="password" placeholder="Enter your password" />
+        <Input type="password" id="password" name="password" placeholder="Enter your password" />
       </p>
       <p class="flex flex-col gap-2">
         <Label htmlFor="code">
           MFA Code
         </Label>
-        <Input name="code" placeholder="Enter your MFA code" />
+        <Input name="code" id="code" placeholder="Enter your MFA code" />
       </p>
       <p class="flex flex-col gap-2">
         <Button className="w-full">
