@@ -1,8 +1,8 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import Layout from '@/modules/core/layouts/Layout.astro';
+import { Label } from '@/modules/core/ui/label';
+import { Input } from '@/modules/core/ui/input';
+import { Button } from '@/modules/core/ui/button';
 ---
 <Layout>
   <main class="flex flex-col gap-12 items-center mt-10">
@@ -34,7 +34,6 @@ import { Button } from '@/components/ui/button';
       </p>
       <div class="flex flex-col gap-2">
         <Label htmlFor="role">
-          Role
         </Label>
         <Input name="role" id="role" type="hidden" />
         <div class="flex gap-2">

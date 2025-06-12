@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@/modules/core/lib/utils';
 import { Button, buttonVariants } from './button';
 import { type VariantProps } from 'class-variance-authority';
 import React from 'react';
