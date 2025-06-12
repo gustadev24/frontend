@@ -10,19 +10,19 @@ import { Link } from '@/components/ui/link';
     <h1 class="font-bold text-3xl">Welcome back</h1>
     <form class="flex flex-col gap-8 w-full px-8 max-w-3xl">
       <p class="flex flex-col gap-2">
-        <Label client:load htmlFor="email">
+        <Label htmlFor="email">
           Email
         </Label>
         <Input type="email" name="email" placeholder="Enter your email" />
       </p>
       <p class="flex flex-col gap-2">
-        <Label client:load htmlFor="password">
+        <Label htmlFor="password">
           Password
         </Label>
         <Input type="password" name="password" placeholder="Enter your password" />
       </p>
       <p class="flex flex-col gap-2">
-        <Label client:load htmlFor="code">
+        <Label htmlFor="code">
           MFA Code
         </Label>
         <Input name="code" placeholder="Enter your MFA code" />
@@ -31,8 +31,11 @@ import { Link } from '@/components/ui/link';
         <Button className="w-full">
           Login
         </Button>
-        <Link variant="ghost">
+        <Link variant="ghost" size="sm">
           Forgot your password?
+        </Link>
+        <Link variant="link" href="/auth/register" size="sm">
+          Don't have an account? Sign up
         </Link>
       </p>
     </form>
