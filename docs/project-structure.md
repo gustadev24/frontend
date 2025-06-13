@@ -37,6 +37,7 @@ src/
 The `components` directory contains reusable components that can be used across the module. The `ui` directory contains the user interface components, such as buttons, forms, and other elements that make up the visual part of the module. The `layouts` directory contains the layout components that define the structure of the module's pages. The `hooks` directory contains custom hooks that can be used to manage state and side effects in the module. The `lib` directory contains utility functions that can be used across the module. The `constants` directory contains constants that are used in the module. The `types` directory contains TypeScript types that are used in the module. Finally, the `tests` directory contains tests for the module.
 
 In this project, we have several modules, each serving a specific purpose:
+
 - `core`: Contains the core functionality of the application.
 - `auth`: Handles user authentication and authorization.
 - `dashboard`: Contains the main dashboard components and logic.

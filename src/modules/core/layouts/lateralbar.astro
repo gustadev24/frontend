@@ -1,0 +1,39 @@
+---
+import { IconBooks, IconHome, IconMessageReport, IconUsers } from '@tabler/icons-react';
+
+
+const NAVBAR = [
+  {
+    icon: IconHome,
+    label: 'Dashboard',
+    href: '/dashboard'
+  },
+  {
+    icon: IconBooks,
+    label: 'Courses',
+    href: '/courses'
+  },
+  {
+    icon: IconUsers,
+    label: 'Students',
+    href: '/students'
+  },
+  {
+    icon: IconMessageReport,
+    label: 'Reports',
+    href: '/reports'
+  }
+];
+
+---
+
+<aside class="w-full max-w-sm border-border border-r px-6 py-10">
+  <nav class="flex flex-col gap-4">
+    {NAVBAR.map((item) => (
+      <a href={item.href} class="flex items-center gap-2 p-2 hover:bg-gray-200 rounded transition-colors">
+        <item.icon size={24} />
+        <span>{item.label}</span>
+      </a>
+    ))}
+  </nav>
+</aside>

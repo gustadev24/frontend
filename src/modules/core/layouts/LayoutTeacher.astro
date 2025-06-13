@@ -1,7 +1,7 @@
 ---
 import '@/styles/global.css';
 import '@fontsource-variable/lexend';
-import Header from '@/modules/core/layouts/header.astro';
+import Lateralbar from '@/modules/core/layouts/lateralbar.astro';
 ---
 <!doctype html>
 <html lang="en">
@@ -9,12 +9,11 @@ import Header from '@/modules/core/layouts/header.astro';
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>StudyCentral</title>
+		<title>Teacher Center</title>
 	</head>
-	<body>
-	  <Header />
-		<main class="pb-20">
+	<body class="flex w-full">
+	  <Lateralbar />
+		<main class="pb-20 w-full">
 		  <slot />
 		</main>
 	</body>
