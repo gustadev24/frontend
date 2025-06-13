@@ -1,5 +1,7 @@
-import { CoursesStates } from '@/modules/core/lib/courses';
-import type { CourseProps } from '@/modules/core/types/courses';
+import {
+  type CourseProps,
+  CourseStatus,
+} from '@/modules/courses/types/courses';
 import useSWR from 'swr';
 // import { getMyCourses } from '@/modules/core/lib/api';
 
@@ -11,7 +13,7 @@ const getMyCourses = async (): Promise<CourseProps[]> => {
       link: '/courses/react',
       imageUrl:
         'https://ynoa-uploader.ynoacamino.site/uploads/1749595995_Depth%206%2C%20Frame%201.png',
-      status: CoursesStates.ACTIVE,
+      status: CourseStatus.ACTIVE,
       date: new Date('2023-10-01'),
     },
     {
@@ -20,7 +22,7 @@ const getMyCourses = async (): Promise<CourseProps[]> => {
       link: '/courses/nextjs',
       imageUrl:
         'https://ynoa-uploader.ynoacamino.site/uploads/1749595995_Depth%206%2C%20Frame%201.png',
-      status: CoursesStates.INACTIVE,
+      status: CourseStatus.INACTIVE,
       date: new Date('2023-10-15'),
     },
     {
@@ -29,7 +31,7 @@ const getMyCourses = async (): Promise<CourseProps[]> => {
       link: '/courses/typescript',
       imageUrl:
         'https://ynoa-uploader.ynoacamino.site/uploads/1749595995_Depth%206%2C%20Frame%201.png',
-      status: CoursesStates.ACTIVE,
+      status: CourseStatus.ACTIVE,
       date: new Date('2023-11-01'),
     },
   ];
