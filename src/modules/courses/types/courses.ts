@@ -1,6 +1,7 @@
-import { CoursesStates } from '../lib/courses';
-
-export type CourseStatus = (typeof CoursesStates)[keyof typeof CoursesStates];
+export enum CourseStatus {
+  ACTIVE = 'Active',
+  INACTIVE = 'Inactive',
+}
 
 export interface CourseProps {
   title: string;
