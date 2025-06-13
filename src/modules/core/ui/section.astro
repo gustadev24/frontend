@@ -2,9 +2,11 @@
 import type { HTMLAttributes } from 'astro/types';
 import { cn } from '@/modules/core/lib/utils';
 
-type Props = HTMLAttributes<'section'>;
+type Props = HTMLAttributes<'section'> & {
+  title: string;
+};
 
-const { class: className, ...rest } = Astro.props;
+const { class: className, title, ...rest } = Astro.props;
 ---
 <section
   class:list={cn(
@@ -13,5 +15,6 @@ const { class: className, ...rest } = Astro.props;
   )}
   {...rest}
 >
+  <h2 class="font-bold text-[22px] pt-4 pb-3">{title}</h2>
   <slot />
 </section>
