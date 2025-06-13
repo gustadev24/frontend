@@ -22,19 +22,19 @@ docs(readme): update usage section
 
 ## 🔑 Tipos permitidos
 
-| Tipo       | Propósito                                                             |
-|------------|----------------------------------------------------------------------|
-| `feat`     | Nueva funcionalidad                                                   |
-| `fix`      | Corrección de bugs                                                    |
-| `docs`     | Cambios solo en la documentación                                      |
-| `style`    | Cambios de formato (espacios, comas, etc) sin afectar lógica          |
-| `refactor` | Refactorización sin cambios en funcionalidad o correcciones          |
-| `perf`     | Mejoras de rendimiento                                                |
-| `test`     | Agregar o actualizar pruebas                                          |
-| `build`    | Cambios en herramientas de compilación o dependencias                 |
-| `ci`       | Cambios en la configuración de CI (GitHub Actions, etc)              |
-| `chore`    | Mantenimiento general (no relacionado directamente a código de app)   |
-| `revert`   | Reversión de commits anteriores                                       |
+| Tipo       | Propósito                                                           |
+| ---------- | ------------------------------------------------------------------- |
+| `feat`     | Nueva funcionalidad                                                 |
+| `fix`      | Corrección de bugs                                                  |
+| `docs`     | Cambios solo en la documentación                                    |
+| `style`    | Cambios de formato (espacios, comas, etc) sin afectar lógica        |
+| `refactor` | Refactorización sin cambios en funcionalidad o correcciones         |
+| `perf`     | Mejoras de rendimiento                                              |
+| `test`     | Agregar o actualizar pruebas                                        |
+| `build`    | Cambios en herramientas de compilación o dependencias               |
+| `ci`       | Cambios en la configuración de CI (GitHub Actions, etc)             |
+| `chore`    | Mantenimiento general (no relacionado directamente a código de app) |
+| `revert`   | Reversión de commits anteriores                                     |
 
 ---
 
