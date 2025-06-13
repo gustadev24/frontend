@@ -15,7 +15,12 @@ function CourseSkeleton() {
   );
 }
 
-function Course({ description, imageUrl, link, title }: CourseProps) {
+function Course({
+  description,
+  imageUrl,
+  link,
+  title,
+}: Omit<CourseProps, 'status' | 'date'>) {
   return (
     <div className="grid grid-cols-2">
       <div>

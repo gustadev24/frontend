@@ -10,11 +10,11 @@ const { class: className, title, ...rest } = Astro.props;
 ---
 <section
   class:list={cn(
-    'flex flex-col my-8 sm:my-12 md:my-16 w-full gap-4',
+    'flex flex-col my-2 sm:my-4 md:my-6 w-full gap-4',
     className
   )}
   {...rest}
 >
-  <h2 class="font-bold text-[22px] pt-4 pb-3">{title}</h2>
+  <h2 class="font-bold text-[22px] py-3">{title}</h2>
   <slot />
 </section>
