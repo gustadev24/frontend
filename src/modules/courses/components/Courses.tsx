@@ -1,10 +1,18 @@
 import { Link } from '@/modules/core/ui/link';
+import { useCourses } from '../hooks/useCourses';
+import type { CourseProps } from '@/modules/core/types/courses';
 
-interface CourseProps {
-  title: string;
-  description: string;
-  link: string;
-  imageUrl: string;
+function CourseSkeleton() {
+  return (
+    <div className="grid grid-cols-2 gap-4 animate-pulse">
+      <div className="flex flex-col gap-2">
+        <div className="h-6 bg-gray-300 rounded w-3/4"></div>
+        <div className="h-4 bg-gray-300 rounded w-full"></div>
+        <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+      </div>
+      <div className="bg-gray-300 aspect-video max-w-sm w-full rounded-[12px] justify-self-end"></div>
+    </div>
+  );
 }
 
 function Course({ description, imageUrl, link, title }: CourseProps) {
@@ -26,30 +34,18 @@ function Course({ description, imageUrl, link, title }: CourseProps) {
   );
 }
 export default function Courses() {
-  // mockear use Course
-  const courses: CourseProps[] = [
-    {
-      title: 'Curso de React',
-      description: 'Aprende React desde cero con este curso completo.',
-      link: '/courses/react',
-      imageUrl:
-        'https://ynoa-uploader.ynoacamino.site/uploads/1749595995_Depth%206%2C%20Frame%201.png',
-    },
-    {
-      title: 'Curso de Next.js',
-      description: 'Domina Next.js y crea aplicaciones web modernas.',
-      link: '/courses/nextjs',
-      imageUrl:
-        'https://ynoa-uploader.ynoacamino.site/uploads/1749595995_Depth%206%2C%20Frame%201.png',
-    },
-    {
-      title: 'Curso de TypeScript',
-      description: 'Aprende TypeScript y mejora tu código JavaScript.',
-      link: '/courses/typescript',
-      imageUrl:
-        'https://ynoa-uploader.ynoacamino.site/uploads/1749595995_Depth%206%2C%20Frame%201.png',
-    },
-  ];
+  const { courses, isLoading } = useCourses();
+
+  if (isLoading || !courses) {
+    return (
+      <div className="flex flex-col gap-4">
+        <CourseSkeleton />
+        <CourseSkeleton />
+        <CourseSkeleton />
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-10">
       {courses.map((course) => (
