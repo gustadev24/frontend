@@ -13,7 +13,7 @@ function Course({ description, imageUrl, link, title }: CourseProps) {
       <div>
         <h3 className="font-bold">{title}</h3>
         <p className="text-sm">{description}</p>
-        <Link href={link} className="mt-3">
+        <Link href={link} className="mt-3" variant={'secondary'}>
           View Course
         </Link>
       </div>

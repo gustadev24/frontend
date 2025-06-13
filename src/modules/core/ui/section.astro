@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'section'> {
+  title: string;
+}
+
+const { title, ...rest } = Astro.props as Props;
+---
+
+<section class="w-full flex justify-center" {...rest}>
+  <div class="flex w-full max-w-5xl flex-col gap-4">
+    <h2 class="font-bold text-[22px] pt-4 pb-3">{title}</h2>
+    <slot />
+  </div>
+</section>

@@ -1,0 +1,15 @@
+---
+import Courses from '@/modules/courses/components/Courses';
+import Layout from '@/modules/core/layouts/Layout.astro';
+import Section from '@/modules/core/ui/section.astro';
+import H1 from '@/modules/core/ui/h1.astro';
+---
+
+<Layout>
+  <H1>
+    My Dashboard
+  </H1>
+  <Section title="Course Progress">
+      <Courses />
+  </Section>
+</Layout>
