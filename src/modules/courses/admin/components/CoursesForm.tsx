@@ -12,75 +12,14 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'astro:schema';
 import { Input } from '@/modules/core/ui/input';
 import { Button } from '@/modules/core/ui/button';
-
-const formSchema = z.object({
-  title: z.string().min(2, {
-    message: 'Title must be at least 2 characters long',
-  }),
-  description: z
-    .string()
-    .min(10, {
-      message: 'Description must be at least 10 characters long',
-    })
-    .max(500, {
-      message: 'Description must be at most 500 characters long',
-    }),
-  image: z.string().url({
-    message: 'Image must be a valid URL',
-  }),
-  category: z.string(),
-  teacher: z.string(),
-  modules: z.string(),
-});
-
-const fields: {
-  name: keyof z.infer<typeof formSchema>;
-  label: string;
-  placeholder: string;
-  description: string;
-  type?: string;
-}[] = [
-  {
-    name: 'title',
-    label: 'Title',
-    placeholder: 'e.g. Intro to React',
-    description: 'The title of the course, e.g., "Intro to React".',
-  },
-  {
-    name: 'description',
-    label: 'Description',
-    placeholder: 'e.g. This course covers the basics of React.',
-    description: 'A short summary of what the course is about.',
-  },
-  {
-    name: 'image',
-    label: 'Image URL',
-    placeholder: 'https://...',
-    description: 'Link to a preview image for this course.',
-  },
-  {
-    name: 'category',
-    label: 'Category',
-    placeholder: 'e.g. Web Development',
-    description: 'Course category or topic.',
-  },
-  {
-    name: 'teacher',
-    label: 'Teacher',
-    placeholder: 'e.g. John Doe',
-    description: 'Name of the course instructor.',
-  },
-  {
-    name: 'modules',
-    label: 'Modules',
-    placeholder: 'e.g. 5',
-    description: 'Number of modules in the course.',
-  },
-];
+import {
+  coursesFormSchema,
+  courseFormFields,
+} from '@/modules/courses/admin/lib/coursesForm';
 
 function CoursesForm() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof coursesFormSchema>>({
+    resolver: zodResolver(coursesFormSchema),
     defaultValues: {
       title: '',
       description: '',
@@ -91,7 +30,7 @@ function CoursesForm() {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = (values: z.infer<typeof coursesFormSchema>) => {
     console.log(values);
   };
   return (
@@ -100,7 +39,7 @@ function CoursesForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-y-4"
       >
-        {fields.map((field) => (
+        {courseFormFields.map((field) => (
           <FormField
             key={`form-courses-${field.name}`}
             control={form.control}
