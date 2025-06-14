@@ -7,7 +7,7 @@ import {
   TableHead,
 } from '@/modules/core/ui/table';
 import { useCourses } from '@/modules/courses/hooks/useCourses';
-import { CoursesCellStatus } from './CoursesCellStatus';
+import { CoursesCellStatus } from '@/modules/courses/admin/components/CoursesCellStatus';
 
 function CoursesTableBodySkeleton() {
   return Array.from({ length: 3 }).map((_, i) => (

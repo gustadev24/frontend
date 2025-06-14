@@ -12,7 +12,9 @@
   "dependencies": {
     "@astrojs/react": "^4.3.0",
     "@fontsource-variable/lexend": "^5.2.9",
+    "@hookform/resolvers": "^5.1.1",
     "@nanostores/react": "^1.0.0",
+    "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "@tabler/icons-react": "^3.34.0",
     "@tailwindcss/vite": "^4.1.8",
@@ -25,6 +27,7 @@
     "nanostores": "^1.0.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-hook-form": "^7.57.0",
     "swr": "^2.3.3",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.8"
