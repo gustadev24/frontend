@@ -1,5 +1,5 @@
 import { useStore } from '@nanostores/react';
-import { $user } from '../authStore';
+import { $user } from '../lib/authStore';
 import type { User } from '@/modules/core/types/user';
 
 function UnAuthenticated() {

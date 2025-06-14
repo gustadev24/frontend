@@ -1,43 +1,10 @@
 ---
 import Layout from '@/modules/core/layouts/Layout.astro';
-import { Label } from '@/modules/core/ui/label';
-import { Input } from '@/modules/core/ui/input';
-import { Button } from '@/modules/core/ui/button';
-import { Link } from '@/modules/core/ui/link';
+import { LoginForm } from '@/modules/auth/components/LoginForm';
 ---
 <Layout>
   <main class="flex flex-col gap-12 items-center mt-10">
     <h1 class="font-bold text-3xl">Welcome back</h1>
-    <form class="flex flex-col gap-8 w-full px-8 max-w-3xl">
-      <p class="flex flex-col gap-2">
-        <Label htmlFor="email">
-          Email
-        </Label>
-        <Input type="email" id="email" name="email" placeholder="Enter your email" autoComplete="email" />
-      </p>
-      <p class="flex flex-col gap-2">
-        <Label htmlFor="password">
-          Password
-        </Label>
-        <Input type="password" id="password" name="password" placeholder="Enter your password" />
-      </p>
-      <p class="flex flex-col gap-2">
-        <Label htmlFor="code">
-          MFA Code
-        </Label>
-        <Input name="code" id="code" placeholder="Enter your MFA code" />
-      </p>
-      <p class="flex flex-col gap-2">
-        <Button className="w-full">
-          Login
-        </Button>
-        <Link variant="ghost" size="sm">
-          Forgot your password?
-        </Link>
-        <Link variant="link" href="/auth/register" size="sm">
-          Don't have an account? Sign up
-        </Link>
-      </p>
-    </form>
+    <LoginForm client:only="react" />
   </main>
 </Layout>

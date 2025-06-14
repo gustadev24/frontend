@@ -1,6 +1,6 @@
 import type { User } from '@/modules/core/types/user';
 import { useStore } from '@nanostores/react';
-import { $user } from '../authStore';
+import { $user } from '../lib/authStore';
 
 function UnAuthenticated() {
   return (
