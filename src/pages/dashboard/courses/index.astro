@@ -1,7 +1,8 @@
 ---
 import Layout from '@/modules/core/layouts/Layout.astro';
 import Section from '@/modules/core/ui/section.astro';
-import { CoursesTable } from '@/modules/courses/components/CoursesTable';
+import { CoursesTable } from '@/modules/courses/admin/components/CoursesTable';
+import { CoursesForm } from '@/modules/courses/admin/components/CoursesForm';
 import Title from '@/modules/core/ui/title.astro';
 ---
 <Layout>
@@ -14,5 +15,8 @@ import Title from '@/modules/core/ui/title.astro';
       <div slot="fallback" class="bg-gray-300 w-full h-36 animate-pulse">
       </div>
     </CoursesTable>
+  </Section>
+  <Section title="Create/Edit Course">
+    <CoursesForm client:only="react" />
   </Section>
 </Layout>
