@@ -28,7 +28,7 @@ function Course({ description, imageUrl, link, title }: CourseProps) {
       <img
         src={imageUrl}
         alt={title}
-        className="w-full aspect-video object-cover rounded-[12px] max-w-sm justify-self-end"
+        className="w-full aspect-video object-cover rounded-[12px] max-w-sm justify-self-end bg-gray-300"
       />
     </div>
   );
