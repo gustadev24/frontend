@@ -1,9 +1,10 @@
 ---
-import Courses from '@/modules/courses/components/Courses';
 import Grades from '@/modules/courses/components/Grades';
 import Section from '@/modules/core/ui/section.astro';
 import H1 from '@/modules/core/ui/h1.astro';
 import LayoutTeacher from '@/modules/core/layouts/LayoutTeacher.astro';
+import CourseOverview from '@/modules/courses/components/CourseOverview';
+import Reports from '@/modules/courses/components/Reports';
 ---
 
 <LayoutTeacher>
@@ -11,9 +12,12 @@ import LayoutTeacher from '@/modules/core/layouts/LayoutTeacher.astro';
     Teacher Dashboard
   </H1>
   <Section title="Course Overview">
-    <Courses client:load/>
+    <CourseOverview client:load/>
   </Section>
   <Section title="Student Progress">
     <Grades client:visible/>
+  </Section>
+  <Section title="Reports">
+    <Reports client:visible/>
   </Section>
 </LayoutTeacher>
