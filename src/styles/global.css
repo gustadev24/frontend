@@ -119,4 +119,7 @@
     @apply bg-background text-foreground;
     font-family: 'Lexend Variable', sans-serif;
   }
+  html {
+    scrollbar-gutter: stable;
+  }
 }
