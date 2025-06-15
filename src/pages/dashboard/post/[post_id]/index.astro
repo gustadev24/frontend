@@ -1,0 +1,23 @@
+---
+import Layout from '@/modules/core/layouts/Layout.astro';
+import Section from '@/modules/core/ui/section.astro';
+import Body from '@/modules/post/components/body';
+
+type Props = {
+  post_id: string;
+};
+
+export const prerender = false;
+
+const { post_id } = Astro.params;
+
+if (!post_id) {
+  return Astro.redirect('/dashboard/post');
+}
+
+---
+<Layout>
+  <Section>
+    <Body postId={post_id} client:load />
+  </Section>
+</Layout>

@@ -1,4 +1,4 @@
-export interface GradeProps {
+export interface Grade {
   grade: string;
   course: string;
 }

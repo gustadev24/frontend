@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
 
 /* @custom-variant dark (&:is(.dark *)); */
 
@@ -51,7 +52,7 @@
   --popover-foreground: oklch(0.141 0.005 285.823);
   --primary: oklch(00 0.006 285.885);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(94.37% 0.009 247.92);
+  --secondary: oklch(92% 0.009 247.92);
   --secondary-foreground: oklch(00 0.006 285.885);
   --muted: oklch(94.37% 0.009 247.92);
   --muted-foreground: oklch(0.552 0.016 285.938);
