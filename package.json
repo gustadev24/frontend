@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
+    "@astrojs/vercel": "^8.1.5",
     "@fontsource-variable/lexend": "^5.2.9",
     "@hookform/resolvers": "^5.1.1",
     "@nanostores/persistent": "^1.0.0",
