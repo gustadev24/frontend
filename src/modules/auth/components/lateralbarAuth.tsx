@@ -1,19 +1,15 @@
 import type { User } from '@/modules/core/types/user';
 import { useStore } from '@nanostores/react';
 import { $user } from '../lib/authStore';
+import { useEffect } from 'react';
+import { capitalize } from '@/modules/core/lib/utils';
 
 function UnAuthenticated() {
-  return (
-    <div className="flex items-start gap-3 px-3">
-      <button className="rounded-full aspect-square bg-zinc-300 w-9 hover:bg-zinc-400/50 transition-colors">
-        <span className="sr-only">Login icon</span>
-      </button>
-      <div className="flex flex-col gap-1">
-        <span className="font-medium">Guest</span>
-        <span className="text-sm">Not logged in</span>
-      </div>
-    </div>
-  );
+  useEffect(() => {
+    window.location.href = '/login';
+  }, []);
+
+  return null;
 }
 
 function Authenticated({ user }: { user: User }) {
@@ -29,7 +25,7 @@ function Authenticated({ user }: { user: User }) {
       </button>
       <div className="flex flex-col gap-1">
         <span className="font-medium">{user.name}</span>
-        <span className="text-sm">{user.role}</span>
+        <span className="text-sm">{capitalize(user.role)}</span>
       </div>
     </div>
   );

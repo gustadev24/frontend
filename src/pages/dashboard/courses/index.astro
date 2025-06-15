@@ -12,11 +12,12 @@ import Title from '@/modules/core/ui/title.astro';
   </header>
   <Section title="Existing courses">
     <CoursesTable client:only="react">
-      <div slot="fallback" class="bg-gray-300 w-full h-36 animate-pulse">
+      <div slot="fallback" class="bg-gray-300 w-full h-36 animate-pulse rounded-lg">
       </div>
     </CoursesTable>
   </Section>
   <Section title="Create/Edit Course">
-    <CoursesForm client:only="react" />
+    <CoursesForm client:load >
+    </CoursesForm>
   </Section>
 </Layout>

@@ -13,8 +13,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { loginFormSchema, loginFormFields } from '@/modules/auth/lib/loginForm';
+import { useStore } from '@nanostores/react';
+import { $user, login } from '../lib/authStore';
+import { useEffect } from 'react';
 
 function LoginForm() {
+  const user = useStore($user);
+
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
@@ -24,8 +29,18 @@ function LoginForm() {
   });
 
   const onSubmit = (values: z.infer<typeof loginFormSchema>) => {
-    console.log(values);
+    login({
+      email: values.email,
+      password: values.password,
+    });
   };
+
+  useEffect(() => {
+    if (user) {
+      window.location.href = '/';
+    }
+  }, [user]);
+
   return (
     <Form {...form}>
       <form

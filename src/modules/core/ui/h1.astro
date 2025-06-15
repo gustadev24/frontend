@@ -6,7 +6,7 @@ interface Props extends HTMLAttributes<'h1'> {
 
 const { ...rest } = Astro.props as Props;
 ---
-<div class="w-full flex justify-center py-4 px-4 sm:px-6 md:px-8">
+<div class="w-full flex justify-center py-4 px-4 sm:px-6 md:px-8 max-w-5xl">
   <div class="flex w-full flex-col gap-4">
     <h1 class="text-[32px] font-bold" {...rest}>
       <slot />
