@@ -1,10 +1,10 @@
 ---
-import Layout from '@/modules/core/layouts/Layout.astro';
 import { Label } from '@/modules/core/ui/label';
 import { Input } from '@/modules/core/ui/input';
 import { Button } from '@/modules/core/ui/button';
+import LayoutLogin from '@/modules/core/layouts/LayoutLogin.astro';
 ---
-<Layout>
+<LayoutLogin>
   <main class="flex flex-col gap-12 items-center mt-10">
     <h1 class="font-bold text-3xl">Create your account</h1>
     <form class="flex flex-col gap-8 w-full px-8 max-w-3xl" method="post">
@@ -54,4 +54,4 @@ import { Button } from '@/modules/core/ui/button';
       </p>
     </form>
   </main>
-</Layout>
+</LayoutLogin>

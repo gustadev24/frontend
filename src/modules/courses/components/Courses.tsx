@@ -47,6 +47,7 @@ export default function Courses() {
         <CourseSkeleton />
         <CourseSkeleton />
         <CourseSkeleton />
+        <CourseSkeleton />
       </div>
     );
   }

@@ -1,7 +1,14 @@
-import { atom } from 'nanostores';
+import { atom, onMount } from 'nanostores';
 import { Role, type User } from '@/modules/core/types/user';
 
 export const $user = atom<User | null>(null);
+
+onMount($user, () => {
+  const storedUser = localStorage.getItem('user');
+  if (storedUser) {
+    $user.set(JSON.parse(storedUser));
+  }
+});
 
 export function login({
   email,
@@ -15,7 +22,7 @@ export function login({
     name: 'Yenaro Noa Camino',
     email,
     photo:
-      'https://ynoa-uploader.ynoacamino.site/uploads/1749829759_204490916.png',
+      'https://ynoa-uploader.ynoacamino.site/uploads/1750016704_ACg8ocLnHIiNMcd-ltRxMAQZ6Qo1hKAeSyZsktQKBp5kNltpKDzlg4_q=s96-c.webp',
     role: Role.Student,
     mfaEnabled: false,
   };
@@ -26,7 +33,6 @@ export function login({
 }
 
 export function logout() {
-  // Simulate a logout process
   $user.set(null);
 }
 

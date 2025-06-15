@@ -1,10 +1,10 @@
 ---
-import Layout from '@/modules/core/layouts/Layout.astro';
+import LayoutLogin from '@/modules/core/layouts/LayoutLogin.astro';
 import { LoginForm } from '@/modules/auth/components/LoginForm';
 ---
-<Layout>
+<LayoutLogin>
   <main class="flex flex-col gap-12 items-center mt-10">
     <h1 class="font-bold text-3xl">Welcome back</h1>
     <LoginForm client:only="react" />
   </main>
-</Layout>
+</LayoutLogin>
