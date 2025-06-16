@@ -1,13 +1,9 @@
-import { atom, onMount } from 'nanostores';
+import { persistentAtom } from '@nanostores/persistent';
 import { Role, type User } from '@/modules/core/types/user';
 
-export const $user = atom<User | null>(null);
-
-onMount($user, () => {
-  const storedUser = localStorage.getItem('user');
-  if (storedUser) {
-    $user.set(JSON.parse(storedUser));
-  }
+export const $user = persistentAtom<User | null>('user', null, {
+  encode: JSON.stringify,
+  decode: JSON.parse,
 });
 
 export function login({
