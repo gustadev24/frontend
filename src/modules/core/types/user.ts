@@ -1,7 +1,6 @@
-export enum Role {
-  Teacher = 'teacher',
-  Student = 'student',
-}
+import { Roles } from '@/modules/core/lib/user';
+
+export type Role = (typeof Roles)[keyof typeof Roles];
 
 export interface User {
   id: number;

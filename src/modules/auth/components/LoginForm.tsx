@@ -45,7 +45,7 @@ function LoginForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-y-4 w-full max-w-4xl"
+        className="flex flex-col gap-y-4 w-full px-4 sm:px-6 md:px-8 max-w-3xl"
       >
         {loginFormFields.map((field) => (
           <FormField

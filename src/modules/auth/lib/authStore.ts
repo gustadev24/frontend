@@ -1,6 +1,6 @@
 import { persistentAtom } from '@nanostores/persistent';
-import { Role, type User } from '@/modules/core/types/user';
-
+import { type User } from '@/modules/core/types/user';
+import { Roles } from '@/modules/core/lib/user';
 export const $user = persistentAtom<User | null>('user', null, {
   encode: JSON.stringify,
   decode: JSON.parse,
@@ -19,7 +19,7 @@ export function login({
     email,
     photo:
       'https://ynoa-uploader.ynoacamino.site/uploads/1750016704_ACg8ocLnHIiNMcd-ltRxMAQZ6Qo1hKAeSyZsktQKBp5kNltpKDzlg4_q=s96-c.webp',
-    role: Role.Student,
+    role: Roles.Student,
     mfaEnabled: false,
   };
 
