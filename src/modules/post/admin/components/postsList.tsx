@@ -1,30 +1,39 @@
 import type { Post } from '@/modules/core/types/posts';
 import { useAllPosts } from '../lib/usePosts';
+import { Link } from '@/modules/core/ui/link';
 
 function PostsListSkeleton() {
   return (
-    <a
-      href={'/dashboard/post/'}
-      className="p-4 border rounded-md border-border"
-    >
+    <div className="p-4 border rounded-md border-border">
       <div className="h-8 w-1/2 bg-gray-300 animate-pulse mb-2 rounded-xs"></div>
       <div className="h-5 w-1/4 bg-gray-300 animate-pulse mb-4 rounded-xs"></div>
       <div className="h-5 w-full bg-gray-300 animate-pulse mb-3 rounded-xs"></div>
-    </a>
+    </div>
   );
 }
 
 function PostItem({ post }: { post: Post }) {
   return (
-    <a
-      href={'/dashboard/post/' + post.id}
+    <div
+      // href={'/dashboard/post/' + post.id}
       key={post.id}
-      className="p-4 border rounded-md border-border"
+      className="p-4 border rounded-md border-border flex justify-between items-center"
     >
-      <h2 className="text-xl font-bold">{post.title}</h2>
-      <p className="text-sm text-gray-600">{post.module.title}</p>
-      <p className="mt-2">{post.excerpt}</p>
-    </a>
+      <div className="flex flex-col">
+        <h2 className="text-xl font-bold">{post.title}</h2>
+        <p className="text-sm text-gray-600">{post.module.title}</p>
+        <p className="mt-2">{post.excerpt}</p>
+      </div>
+      <div className="flex flex-col gap-4">
+        <Link href={'/dashboard/post/' + post.id}>View Post</Link>
+        <Link href={'/teacher/post/edit/' + post.id} variant={'secondary'}>
+          Edit Post
+        </Link>
+        <Link href={'/teacher/post/delete/' + post.id} variant={'destructive'}>
+          Delete Post
+        </Link>
+      </div>
+    </div>
   );
 }
 

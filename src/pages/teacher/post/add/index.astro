@@ -1,0 +1,15 @@
+---
+import LayoutTeacher from '@/modules/core/layouts/LayoutTeacher.astro';
+import H1 from '@/modules/core/ui/h1.astro';
+import ModeSwitch from '@/modules/post/admin/components/modeSwitch';
+import Section from '@/modules/core/ui/section.astro';
+---
+
+<LayoutTeacher>
+  <H1>
+    Add a new post
+  </H1>
+  <Section>
+    <ModeSwitch client:only="react" />
+  </Section>
+</LayoutTeacher>

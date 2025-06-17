@@ -1,0 +1,28 @@
+---
+import LayoutTeacher from '@/modules/core/layouts/LayoutTeacher.astro';
+import H1 from '@/modules/core/ui/h1.astro';
+import ModeSwitch from '@/modules/post/admin/components/modeSwitch';
+import Section from '@/modules/core/ui/section.astro';
+
+type Props = {
+  post_id: string;
+};
+
+export const prerender = false;
+
+const { post_id } = Astro.params;
+
+if (!post_id) {
+  return Astro.redirect('/dashboard/post');
+}
+
+---
+
+<LayoutTeacher>
+  <H1>
+    Edit a post
+  </H1>
+  <Section>
+    <ModeSwitch client:only="react" />
+  </Section>
+</LayoutTeacher>

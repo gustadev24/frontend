@@ -32,9 +32,12 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.57.0",
+    "react-quill": "^2.0.0",
+    "react-simplemde-editor": "^5.2.0",
     "swr": "^2.3.3",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.8"
+    "tailwindcss": "^4.1.8",
+    "turndown": "^7.2.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",

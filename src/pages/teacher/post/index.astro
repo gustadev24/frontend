@@ -1,0 +1,15 @@
+---
+import LayoutTeacher from '@/modules/core/layouts/LayoutTeacher.astro';
+import H1 from '@/modules/core/ui/h1.astro';
+import PostsList from '@/modules/post/admin/components/postsList';
+import Section from '@/modules/core/ui/section.astro';
+---
+
+<LayoutTeacher>
+  <H1>
+    Posts
+  </H1>
+  <Section>
+    <PostsList client:load />
+  </Section>
+</LayoutTeacher>
