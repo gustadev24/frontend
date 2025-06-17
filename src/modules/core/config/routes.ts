@@ -51,7 +51,7 @@ export const routesConfig = {
       iconSelect: IconUserFilled,
     },
     {
-      path: '/teacher/posts',
+      path: '/teacher/post',
       name: 'Posts',
       icon: IconMessage,
       iconSelect: IconMessageFilled,
