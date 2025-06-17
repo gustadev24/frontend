@@ -1,5 +1,5 @@
 import { marked } from 'marked';
-import { useOnePost } from '../hooks/usePosts';
+import { useOnePost } from '../lib/usePosts';
 
 function BodySkeleton() {
   return (
