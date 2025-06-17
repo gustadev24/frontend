@@ -3,4 +3,4 @@ export const Roles = {
   Student: 'student',
 } as const;
 
-export const RolesArray = Object.values(Roles);
+export const RolesValues = Object.values(Roles);
