@@ -25,6 +25,8 @@ import { routesConfig } from '@/modules/core/config/routes';
     <button class="rounded-full bg-zinc-300 w-9 aspect-square flex items-center justify-center hover:bg-zinc-400/50 transition-colors">
       <IconBell size={18} stroke={2}/>
     </button>
-    <HeaderAuth client:only="react" />
+    <div class="min-w-30">
+      <HeaderAuth client:only="react" />
+    </div>
   </nav>
 </header>
