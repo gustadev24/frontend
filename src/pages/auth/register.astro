@@ -1,57 +1,8 @@
 ---
-import { Label } from '@/modules/core/ui/label';
-import { Input } from '@/modules/core/ui/input';
-import { Button } from '@/modules/core/ui/button';
+import { RegisterForm } from '@/modules/auth/components/RegisterForm';
 import LayoutLogin from '@/modules/core/layouts/LayoutLogin.astro';
 ---
 <LayoutLogin>
-  <main class="flex flex-col gap-12 items-center mt-10">
-    <h1 class="font-bold text-3xl">Create your account</h1>
-    <form class="flex flex-col gap-8 w-full px-8 max-w-3xl" method="post">
-      <p class="flex flex-col gap-2">
-        <Label htmlFor="names">
-          Names
-        </Label>
-        <Input name="names" id="names" autoComplete="given-name" placeholder="Enter your names" />
-      </p>
-      <p class="flex flex-col gap-2">
-        <Label htmlFor="lastNames">
-          Last names
-        </Label>
-        <Input name="lastNames" id="lastNames" autoComplete="family-name" placeholder="Enter your last names" />
-      </p>
-      <p class="flex flex-col gap-2">
-        <Label htmlFor="password">
-          Password
-        </Label>
-        <Input type="password" id="password" name="password" placeholder="Enter your password" />
-      </p>
-      <p class="flex flex-col gap-2">
-        <Label htmlFor="confirmPassword">
-          Confirm password
-        </Label>
-        <Input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" />
-      </p>
-      <div class="flex flex-col gap-2">
-        <Label htmlFor="role">
-        </Label>
-        <Input name="role" id="role" type="hidden" />
-        <div class="flex gap-2">
-          <Button className="flex-1" type="button">
-            Student
-          </Button>
-          <Button className="flex-1" type="button">
-            Teacher
-          </Button>
-        </div>
-      </div>
-
-      <p class="flex flex-col gap-2">
-        <Button className="w-full">
-          Register
-        </Button>
-        <small class="text-center">By signing up, you agree to our Terms of Service and Privacy Policy.</small>
-      </p>
-    </form>
-  </main>
+  <h1 class="font-bold text-3xl">Create your account</h1>
+  <RegisterForm client:only="react" />
 </LayoutLogin>
