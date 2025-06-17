@@ -1,7 +1,7 @@
 ---
 import LayoutTeacher from '@/modules/core/layouts/LayoutTeacher.astro';
 import H1 from '@/modules/core/ui/h1.astro';
-import ModeSwitch from '@/modules/post/admin/components/modeSwitch';
+import AddPost from '@/modules/post/admin/components/addPost';
 import Section from '@/modules/core/ui/section.astro';
 ---
 
@@ -10,6 +10,6 @@ import Section from '@/modules/core/ui/section.astro';
     Add a new post
   </H1>
   <Section>
-    <ModeSwitch client:only="react" />
+    <AddPost client:only="react" />
   </Section>
 </LayoutTeacher>

@@ -1,7 +1,7 @@
 ---
 import LayoutTeacher from '@/modules/core/layouts/LayoutTeacher.astro';
 import H1 from '@/modules/core/ui/h1.astro';
-import ModeSwitch from '@/modules/post/admin/components/modeSwitch';
+import EditPost from '@/modules/post/admin/components/editPost';
 import Section from '@/modules/core/ui/section.astro';
 
 type Props = {
@@ -22,7 +22,7 @@ if (!post_id) {
   <H1>
     Edit a post
   </H1>
-  <Section>
-    <ModeSwitch client:only="react" />
+  <Section class="max-w-7xl">
+    <EditPost client:only="react" postId={post_id} />
   </Section>
 </LayoutTeacher>

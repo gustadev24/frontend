@@ -1,97 +1,87 @@
-import { useState } from 'react';
 import Editor from './editor';
 import { cn } from '@/modules/core/lib/utils';
 import Preview from './preview';
 import { Button } from '@/modules/core/ui/button';
+import { Skeleton } from '@/modules/core/ui/skeleton';
+import { IconCancel, IconDeviceFloppy } from '@tabler/icons-react';
+import { Link } from '@/modules/core/ui/link';
 
-const CONTENT = `# Suscipiunt de aratro monstris deae spiritus fervens
-
-## Nec nec tenet aequoreo mox referat eratque
-
-Lorem markdownum meis. Sub subit iacet poterit.
-
-- Dubie pectoraque tempusque audaci
-- Ne mihi lumina vestigia mille
-- Oramus senserit
-- Nitentem et quis pavent geniti ensis quod
-
-![cat](https://ynoa-uploader.ynoacamino.site/uploads/1750128245_a.webp)
-
-Edita anne non declivis fatemur offensus somno volubilibus inpositaque hic
-*carmen* mariti reminiscitur erat conticuere. Somnus adsumus, suae tum, dum et
-exiguis, quod hasta Gradive magnis loci annos. Bos conexa aderat: iubet fuit;
-examina loquendo famem; est [pavet sine](http://illa-insidior.net/duorumlata)
-fit rebus paruerant et mora, et. Postque aut ramos tellus lavere crudelis,
-guttura cervum primus docet: nec parat validisne senectae.
-
-## Mente spiris monstrique petiti amamus et dedit
-
-Finierat disiecit, vivacia, gurgite apes exigis dixit imis levarit vivit.
-Geruntur emensas fretum, at haerent repellite verus, fraterque. Attulit et
-disque, stat nova, suarum, latrantibus blandis praeposuisse dissidet vos tenui!
-Per quem pectora languescuntque moverat mente. *Inrita quae* medio pugman
-iugulaberis haec cura, minoribus ubi hoc: quoquam cecidere tempora, vulnus
-ministrae inpune vocibus.
-
-![cat](https://ynoa-uploader.ynoacamino.site/uploads/1750128245_a.webp)
-
-Aere cutis terrae et heros ullum retusa; pars fusus caelestia moram. Ut caret
-tenet umida solebat aperite **floribus** et iubet coacervatos. Manat medium,
-capiebant pharetram alii [distantes causas](http://referre-subito.io/cornibus)
-locutus pietas committere qualemve ista, fluvialis. Si tua coniuge gestet
-ingentique e pennisque quaeque, nec Io rector ausus usae est.
-
-\`\`\`
-half(arrayRomVeronica(irc_user, 3), alphaDawUser.uddi(web));
-var icfServerPad = saas(rss_flood(-5, drmPup), 5 + intellectual -
-        solidCross);
-var schema_margin_ldap = 1;
-var formatVideoLayout = wiki;
-\`\`\`
-
-![cat](https://ynoa-uploader.ynoacamino.site/uploads/1750128245_a.webp)
-
-Factis erit ambiguis aut aestu poscitis, lino tandem naides quod fraterno!
-Facundus **caede**, odore soror quisquam bellum.`;
-
-export default function ModeSwitch() {
-  const [viewOrEdit, setViewOrEdit] = useState<'preview' | 'edit'>('edit');
-
-  const [content, setContent] = useState<string>(CONTENT);
-
+export function ModeSwitchSkeleton() {
   return (
-    <div className="w-full flex-col gap-8 flex pb-10">
-      <div className="w-full border-border border-b">
-        <button
-          className={cn(
-            'font-bold text-sm text-foreground/60 px-6 py-3 cursor-pointer',
-            {
-              'text-foreground': viewOrEdit === 'edit',
-            },
-          )}
-          onClick={() => setViewOrEdit('edit')}
-        >
-          Edit
-        </button>
-        <button
-          className={cn(
-            'font-bold text-sm text-foreground/60 px-6 py-3 cursor-pointer',
-            {
-              'text-foreground': viewOrEdit === 'preview',
-            },
-          )}
-          onClick={() => setViewOrEdit('preview')}
-        >
-          Preview
-        </button>
+    <div className="w-full flex-col gap-8 flex pb-10 max-w-5xl">
+      <div className="w-full flex border-border border-b pb-2">
+        <Skeleton className="h-8 w-20" />
+        <Skeleton className="h-8 w-20 ml-4" />
       </div>
-      {viewOrEdit === 'preview' ? (
-        <Preview content={content} />
-      ) : (
-        <Editor content={content} onChange={(value) => setContent(value)} />
-      )}
-      <div className="w-full flex justify-end items-center">
-        <Button>Save Changes</Button>
+      <Skeleton className="h-96 w-full" />
+    </div>
+  );
+}
+
+export default function ModeSwitch({
+  viewOrEdit,
+  setViewOrEdit,
+  content,
+  setContent,
+  className,
+}: {
+  viewOrEdit: 'preview' | 'edit';
+  setViewOrEdit: (mode: 'preview' | 'edit') => void;
+  content: string;
+  setContent: (value: string) => void;
+  className?: string;
+}) {
+  return (
+    <div className="w-full flex gap-10 relative">
+      <div
+        className={cn('w-full flex-col gap-8 flex pb-10 max-w-5xl', className)}
+      >
+        <div className="w-full border-border border-b">
+          <button
+            className={cn(
+              'font-bold text-sm text-foreground/60 px-6 py-3 cursor-pointer',
+              {
+                'text-foreground': viewOrEdit === 'edit',
+              },
+            )}
+            onClick={() => setViewOrEdit('edit')}
+          >
+            Edit
+          </button>
+          <button
+            className={cn(
+              'font-bold text-sm text-foreground/60 px-6 py-3 cursor-pointer',
+              {
+                'text-foreground': viewOrEdit === 'preview',
+              },
+            )}
+            onClick={() => setViewOrEdit('preview')}
+          >
+            Preview
+          </button>
+        </div>
+        <div className="flex w-full">
+          <div className="w-full">
+            {viewOrEdit === 'preview' ? (
+              <Preview content={content} />
+            ) : (
+              <Editor
+                content={content}
+                onChange={(value) => setContent(value)}
+              />
+            )}
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col gap-3 flex-1 sticky top-8 h-full">
+        <Button>
+          <IconDeviceFloppy />
+          Save
+        </Button>
+        <Link href="/teacher/post" variant="outline" className="">
+          <IconCancel />
+          Cancel
+        </Link>
       </div>
     </div>
   );
