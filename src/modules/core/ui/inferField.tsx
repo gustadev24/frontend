@@ -44,9 +44,9 @@ function InferItem<
         {(() => {
           if (props.type === SupportedFields.SELECT) {
             return (
-              <Select>
-                <SelectTrigger>
-                  <SelectValue {...props} />
+              <Select onValueChange={props.onChange} defaultValue={props.value}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder={props.placeholder} />
                 </SelectTrigger>
                 <SelectContent>
                   {props.options.map(({ key, value, textValue }) => (
@@ -93,7 +93,16 @@ function InferItem<
               </InputOTP>
             );
           } else {
-            return <Input {...props} />;
+            return (
+              <Input
+                {...props}
+                onChange={
+                  props.type === SupportedFields.NUMBER
+                    ? (e) => props.onChange(Number(e.target.value))
+                    : props.onChange
+                }
+              />
+            );
           }
         })()}
       </FormControl>
