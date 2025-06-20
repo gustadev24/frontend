@@ -1,14 +1,4 @@
 import { Button } from '@/modules/core/ui/button';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/modules/core/ui/form';
-import { Input } from '@/modules/core/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -16,6 +6,8 @@ import { loginFormSchema, loginFormFields } from '@/modules/auth/lib/loginForm';
 import { useStore } from '@nanostores/react';
 import { $user, login } from '../lib/authStore';
 import { useEffect } from 'react';
+import { InferItem } from '@/modules/core/ui/inferField';
+import { Form, FormField } from '@/modules/core/ui/form';
 
 function LoginForm() {
   const user = useStore($user);
@@ -33,6 +25,7 @@ function LoginForm() {
       email: values.email,
       password: values.password,
     });
+    console.log(values);
   };
 
   useEffect(() => {
@@ -53,23 +46,7 @@ function LoginForm() {
             control={form.control}
             name={field.name}
             render={({ field: formField }) => (
-              <FormItem>
-                <FormLabel>{field.label}</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder={field.placeholder}
-                    {...formField}
-                    onChange={
-                      field.type === 'number'
-                        ? (e) => formField.onChange(Number(e.target.value))
-                        : formField.onChange
-                    }
-                    type={field.type}
-                  />
-                </FormControl>
-                <FormDescription>{field.description}</FormDescription>
-                <FormMessage />
-              </FormItem>
+              <InferItem {...field} {...formField} />
             )}
           />
         ))}

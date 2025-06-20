@@ -1,21 +1,13 @@
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/modules/core/ui/form';
+import { Form, FormField } from '@/modules/core/ui/form';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'astro:schema';
-import { Input } from '@/modules/core/ui/input';
 import { Button } from '@/modules/core/ui/button';
 import {
   coursesFormSchema,
   courseFormFields,
 } from '@/modules/courses/admin/lib/coursesForm';
+import { InferItem } from '@/modules/core/ui/inferField';
 
 function CoursesForm() {
   const form = useForm<z.infer<typeof coursesFormSchema>>({
@@ -45,18 +37,7 @@ function CoursesForm() {
             control={form.control}
             name={field.name}
             render={({ field: formField }) => (
-              <FormItem>
-                <FormLabel>{field.label}</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder={field.placeholder}
-                    {...formField}
-                    type={field.type || 'text'}
-                  />
-                </FormControl>
-                <FormDescription>{field.description}</FormDescription>
-                <FormMessage />
-              </FormItem>
+              <InferItem {...field} {...formField} />
             )}
           />
         ))}

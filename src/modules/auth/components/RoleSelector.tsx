@@ -1,26 +1,20 @@
 import { Roles } from '@/modules/core/lib/user';
 import type { Role } from '@/modules/core/types/user';
 import { Button } from '@/modules/core/ui/button';
-import { useState } from 'react';
+import { memo } from 'react';
 
 interface RoleSelectorProps {
-  defaultValue: Role;
+  value: Role;
   onChange: (value: string) => void;
 }
 
-export default function RoleSelector({
-  defaultValue,
-  onChange,
-}: RoleSelectorProps) {
-  const [selectedRole, setSelectedRole] = useState<Role>(defaultValue);
+function RoleSelector({ value, onChange }: RoleSelectorProps) {
   const inferVariant = (role: Role) =>
-    selectedRole === role ? 'selected' : 'outline';
+    value === role ? 'selected' : 'outline';
   const handleSelection = (role: Role) => {
-    if (role === selectedRole) return;
-    setSelectedRole(role);
+    if (role === value) return;
     onChange(role);
   };
-
   return (
     <div className="flex gap-2">
       <Button
@@ -42,3 +36,5 @@ export default function RoleSelector({
     </div>
   );
 }
+
+export default memo(RoleSelector);
