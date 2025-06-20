@@ -18,7 +18,7 @@ function CoursesForm() {
       image: '',
       category: '',
       teacher: '',
-      modules: '',
+      modules: NaN,
     },
   });
 
