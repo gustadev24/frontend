@@ -1,4 +1,6 @@
+import { SupportedFields } from '@/modules/core/lib/field';
 import { RolesValues } from '@/modules/core/lib/user';
+import type { Field } from '@/modules/core/types/field';
 import type { Role } from '@/modules/core/types/user';
 import { z } from 'zod';
 
@@ -20,16 +22,13 @@ export const registerFormSchema = z.object({
   }),
 });
 
-export const registerFormFields: {
-  name: keyof z.infer<typeof registerFormSchema>;
-  label: string;
-  placeholder: string;
-  description: string;
-  type?: string;
-}[] = [
+export const registerFormFields: Field<
+  keyof z.infer<typeof registerFormSchema>
+>[] = [
   {
     name: 'names',
     label: 'Full Name',
+    type: SupportedFields.TEXT,
     placeholder: 'e.g. John Doe',
     description: 'Your full name as it appears on official documents.',
   },
@@ -38,26 +37,27 @@ export const registerFormFields: {
     label: 'Email',
     placeholder: 'e.g. example@example.com',
     description: 'Your email address for account registration.',
-    type: 'email',
+    type: SupportedFields.EMAIL,
   },
   {
     name: 'password',
     label: 'Password',
     placeholder: 'Enter your password',
     description: 'Your account password.',
-    type: 'password',
+    type: SupportedFields.PASSWORD,
   },
   {
     name: 'confirmPassword',
     label: 'Confirm Password',
     placeholder: 'Re-enter your password',
     description: 'Please confirm your password.',
-    type: 'password',
+    type: SupportedFields.PASSWORD,
   },
   {
     name: 'role',
     label: 'Role',
     placeholder: 'Select your role',
     description: 'Select the role you want to register as.',
+    type: SupportedFields.TEXT,
   },
 ];
