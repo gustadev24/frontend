@@ -1,7 +1,8 @@
 ---
 import Layout from '@/modules/core/layouts/Layout.astro';
 import Section from '@/modules/core/ui/section.astro';
-import Body from '@/modules/post/components/body';
+import Post from '@/modules/post/components/post.astro';
+import { getOnePost } from '@/modules/post/lib/usePosts';
 
 type Props = {
   post_id: string;
@@ -15,9 +16,20 @@ if (!post_id) {
   return Astro.redirect('/dashboard/post');
 }
 
+const post = await getOnePost({ postId: post_id });
 ---
 <Layout>
   <Section>
-    <Body postId={post_id} client:load />
+    <article>
+      <h1 class="text-3xl font-bold mb-4">{post.module.title}</h1>
+      <span class="text-sm text-foreground/80">
+        {post.chapter}: {post.title} by {post.author}
+      </span>
+      <Post server:defer rawContent={post.content}>
+        <div slot="fallback">
+          Loading post...
+        </div>
+      </Post>
+    </article>
   </Section>
 </Layout>

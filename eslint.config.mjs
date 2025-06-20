@@ -27,7 +27,7 @@ export default defineConfig([
     rules: {
       quotes: ['error', 'single'],
       'astro/no-exports-from-components': 'error',
-      'astro/no-set-html-directive': 'warn',
+      'astro/no-set-html-directive': 'off',
       'astro/no-set-text-directive': 'error',
       'astro/no-unused-css-selector': 'warn',
       'astro/prefer-class-list-directive': 'error',

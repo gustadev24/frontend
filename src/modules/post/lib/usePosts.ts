@@ -1,7 +1,11 @@
 import type { Post } from '@/modules/core/types/posts';
 import useSWR from 'swr';
 
-const getOnePost = async ({ postId }: { postId: string }): Promise<Post> => {
+export const getOnePost = async ({
+  postId,
+}: {
+  postId: string;
+}): Promise<Post> => {
   const POST: Post = {
     title: 'Introduction to TypeScript',
     author: 'John Doe',
@@ -69,7 +73,7 @@ export const useOnePost = ({ postId }: { postId: string }) => {
   };
 };
 
-const getAllPosts = async (): Promise<Post[]> => {
+export const getAllPosts = async (): Promise<Post[]> => {
   const POSTS: Post[] = Array.from({ length: 10 }, (_, i) => ({
     title: 'Introduction to TypeScript',
     author: 'John Doe',

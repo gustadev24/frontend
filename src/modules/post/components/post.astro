@@ -1,0 +1,14 @@
+---
+import { marked } from 'marked';
+
+type Props = {
+  rawContent: string;
+};
+const { rawContent } = Astro.props;
+const content = await marked.parse(rawContent, {
+  gfm: true,
+  breaks: true,
+});
+---
+<div set:html={content} class="prose text-pretty text-foreground mt-10 w-full max-w-none"
+/>
