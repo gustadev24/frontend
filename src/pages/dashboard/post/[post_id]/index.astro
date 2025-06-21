@@ -1,6 +1,7 @@
 ---
 import Layout from '@/modules/core/layouts/Layout.astro';
 import Section from '@/modules/core/ui/section.astro';
+import Post from '@/modules/post/components/post.astro';
 import { getOnePost } from '@/modules/post/lib/usePosts';
 import { marked } from 'marked';
 
@@ -18,22 +19,19 @@ if (!post_id) {
 
 const post = await getOnePost({ postId: post_id });
 
-const content = marked.parse(post.content, {
-  gfm: true,
-  breaks: true,
-});
-
-
 ---
 <Layout>
   <Section>
-    <article>
+    <header>
       <h1 class="text-3xl font-bold mb-4">{post.module.title}</h1>
       <span class="text-sm text-foreground/80">
         {post.chapter}: {post.title} by {post.author}
       </span>
-      <div set:html={content} class="prose text-pretty text-foreground mt-10 w-full max-w-none"
-      />
-    </article>
+    </header>
+    <Post server:defer rawContent={post.content}>
+      <div slot="fallback">
+        Loading...
+      </div>
+    </Post>
   </Section>
 </Layout>

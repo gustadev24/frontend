@@ -1,0 +1,72 @@
+---
+import { marked } from 'marked';
+import markedShiki from 'marked-shiki';
+import { codeToHtml } from 'shiki';
+
+type Props = {
+  rawContent: string;
+};
+const { rawContent } = Astro.props;
+
+const content = await marked.use(
+  markedShiki({
+    async highlight(code, lang) {
+      return await codeToHtml(code, {
+        lang,
+        theme: 'github-dark',
+      });
+    },
+    container: `<figure class="highlighted-code">
+    <button class="btn-copy">Copy</button>
+    %s
+    </figure>`
+  }),
+
+).parse(rawContent);
+
+---
+<article set:html={content} class="prose text-pretty text-foreground mt-10 w-full max-w-none"/>
+<script>
+  const copyButtons = document.querySelectorAll('.highlighted-code .btn-copy');
+  copyButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const codeElement = button.parentElement?.querySelector('code');
+      if (codeElement) {
+        navigator.clipboard
+          .writeText(codeElement.textContent || '')
+          .then(() => {
+            button.textContent = 'Copied!';
+            setTimeout(() => {
+              button.textContent = 'Copy';
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error('Failed to copy text: ', err);
+          });
+      }
+    });
+  });
+</script>
+<style is:inline>
+  .highlighted-code {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-copy {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    border-radius: 4px;
+  }
+
+  .btn-copy:hover {
+    background-color: #34495e;
+  }
+</style>
