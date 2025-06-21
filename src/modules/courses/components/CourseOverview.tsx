@@ -1,4 +1,4 @@
-import { useCourses } from '../hooks/useCourses';
+import { useCourses } from '@/modules/courses/lib/useCourses';
 
 function TagSkeleton() {
   return <div className="w-24 h-6 bg-gray-200 animate-pulse rounded-full" />;
