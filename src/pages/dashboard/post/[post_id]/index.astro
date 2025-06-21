@@ -1,5 +1,5 @@
 ---
-import Layout from '@/modules/core/layouts/Layout.astro';
+import LayoutStudent from '@/modules/core/layouts/LayoutStudent.astro';
 import Section from '@/modules/core/ui/section.astro';
 import Post from '@/modules/post/components/post.astro';
 import { getOnePost } from '@/modules/post/lib/usePosts';
@@ -20,7 +20,7 @@ if (!post_id) {
 const post = await getOnePost({ postId: post_id });
 
 ---
-<Layout>
+<LayoutStudent>
   <Section>
     <header>
       <h1 class="text-3xl font-bold mb-4">{post.module.title}</h1>
@@ -34,4 +34,4 @@ const post = await getOnePost({ postId: post_id });
       </div>
     </Post>
   </Section>
-</Layout>
+</LayoutStudent>

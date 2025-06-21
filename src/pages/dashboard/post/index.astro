@@ -1,15 +1,15 @@
 ---
-import Layout from '@/modules/core/layouts/Layout.astro';
+import LayoutStudent from '@/modules/core/layouts/LayoutStudent.astro';
+import H1 from '@/modules/core/ui/h1.astro';
 import Section from '@/modules/core/ui/section.astro';
-import Title from '@/modules/core/ui/title.astro';
 import PostsList from '@/modules/post/components/postsList';
 ---
-<Layout>
-  <Title>Posts for students</Title>
+<LayoutStudent>
+  <H1>Posts for students</H1>
   <Section>
     <p class="text-gray-500">
       Here you can find posts created by students. You can also create your own posts.
     </p>
     <PostsList client:load />
   </Section>
-</Layout>
+</LayoutStudent>
