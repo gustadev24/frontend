@@ -13,12 +13,14 @@ export const COURSES: Course[] = [
     modules: [
       {
         id: '1-1',
+        idCourse: '1',
         title: 'Introducción a React',
         description: 'Conceptos básicos de React y su ecosistema.',
         type: 'video',
       },
       {
         id: '1-2',
+        idCourse: '1',
         title: 'Componentes y Props',
         description: 'Cómo crear componentes y pasar props en React.',
         type: 'video',
@@ -36,12 +38,14 @@ export const COURSES: Course[] = [
     modules: [
       {
         id: '2-1',
+        idCourse: '2',
         title: 'Introducción a Next.js',
         description: 'Aprende los fundamentos de Next.js.',
         type: 'video',
       },
       {
         id: '2-2',
+        idCourse: '2',
         title: 'Rutas y Navegación',
         description: 'Cómo manejar rutas y navegación en Next.js.',
         type: 'video',
@@ -59,12 +63,14 @@ export const COURSES: Course[] = [
     modules: [
       {
         id: '3-1',
+        idCourse: '3',
         title: 'Introducción a TypeScript',
         description: 'Conceptos básicos de TypeScript y su configuración.',
         type: 'video',
       },
       {
         id: '3-2',
+        idCourse: '3',
         title: 'Tipos y Interfaces',
         description: 'Cómo usar tipos e interfaces en TypeScript.',
         type: 'video',

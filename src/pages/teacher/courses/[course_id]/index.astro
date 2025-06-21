@@ -2,6 +2,8 @@
 import LayoutTeacher from '@/modules/core/layouts/LayoutTeacher.astro';
 import HeaderTeacherDashboard from '@/modules/core/components/HeaderTeacherDashboard.astro';
 import { getOneCourse } from '@/modules/courses/lib/useCourses';
+import Section from '@/modules/core/ui/section.astro';
+import { ModulesTable } from '@/modules/courses/admin/components/ModulesTable';
 
 export const prerender = false;
 
@@ -15,5 +17,7 @@ const course = await getOneCourse({ courseId: course_id });
 ---
 <LayoutTeacher>
   <HeaderTeacherDashboard title={course.title} subtitle="Manage modules for this course" />
-
+  <Section title="Modules">
+    <ModulesTable modules={course.modules} client:load />
+  </Section>
 </LayoutTeacher>

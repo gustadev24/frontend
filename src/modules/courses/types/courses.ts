@@ -6,6 +6,7 @@ export type CourseModuleType =
 
 export interface CourseModule {
   id: string;
+  idCourse: string;
   title: string;
   description: string;
   type: CourseModuleType;
