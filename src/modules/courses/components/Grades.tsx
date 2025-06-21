@@ -1,5 +1,5 @@
-import type { GradeProps } from '@/modules/core/types/grades';
-import { useGrades } from '../hooks/useGrades';
+import type { Grade as GradeProps } from '@/modules/core/types/grades';
+import { useGrades } from '@/modules/courses/lib/useGrades';
 
 function GradeSkeleton() {
   return (
