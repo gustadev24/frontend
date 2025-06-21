@@ -11,7 +11,7 @@ const currentPath = Astro.url.pathname;
   <div class="min-h-12">
     <LateralbarAuth client:only="react" />
   </div>
-  <nav class="flex flex-col gap-1">
+  <nav class="flex flex-col gap-1" transition:name="lateralnav">
     {routesConfig.teacherRoutes.map((item) => (
       <a href={item.path} class="group flex items-center gap-2 px-6 py-3 hover:bg-secondary rounded-full transition-colors duration-75">
         {
@@ -24,7 +24,3 @@ const currentPath = Astro.url.pathname;
     ))}
   </nav>
 </aside>
-
-<scrypt>
-
-</scrypt>
