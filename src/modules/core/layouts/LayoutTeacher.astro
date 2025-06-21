@@ -1,29 +1,10 @@
 ---
-import '@/styles/global.css';
-import '@fontsource-variable/lexend';
+import RootLayout from '@/modules/core/layouts/RootLayout.astro';
 import Lateralbar from '@/modules/core/layouts/lateralbar.astro';
 ---
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>Teacher Center</title>
-	</head>
-	<body class="flex w-full">
-	  <Lateralbar />
-		<main class="pb-20 w-full pt-10">
-		  <slot />
-		</main>
-	</body>
-</html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<RootLayout bodyClass="flex w-full">
+  <Lateralbar />
+	<main class="pb-20 w-full pt-10">
+		<slot />
+	</main>
+</RootLayout>

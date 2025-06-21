@@ -1,0 +1,10 @@
+---
+import RootLayout from '@/modules/core/layouts/RootLayout.astro';
+import Header from '@/modules/core/layouts/header.astro';
+---
+<RootLayout>
+  <Header />
+	<main class="flex flex-col pb-20 items-center">
+		<slot />
+	</main>
+</RootLayout>
