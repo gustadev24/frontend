@@ -5,7 +5,7 @@ import { LoginForm } from '@/modules/auth/components/LoginForm';
 <LayoutLogin>
   <h1 class="font-bold text-3xl">Welcome back</h1>
   <div class="flex flex-col gap-y-2 items-center w-full">
-    <LoginForm client:only="react" />
+    <LoginForm client:load />
     <p class="mt-4 text-sm text-gray-600">
       Don't have an account? <a href="/auth/register" class="text-blue-500 hover:underline">Sign up</a>
     </p>
