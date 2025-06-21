@@ -1,0 +1,17 @@
+---
+import H1 from '@/modules/core/ui/h1.astro';
+import H3 from '@/modules/core/ui/h3.astro';
+
+type Props = {
+  title: string;
+  subtitle?: string;
+};
+
+const { title, subtitle } = Astro.props;
+---
+  <header class="flex flex-col gap-2">
+    <H1>{title}</H1>
+    {
+      subtitle && <H3>{subtitle}</H3>
+    }
+  </header>
