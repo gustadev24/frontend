@@ -1,0 +1,19 @@
+---
+import LayoutTeacher from '@/modules/core/layouts/LayoutTeacher.astro';
+import HeaderTeacherDashboard from '@/modules/core/components/HeaderTeacherDashboard.astro';
+import { getOneCourse } from '@/modules/courses/lib/useCourses';
+
+export const prerender = false;
+
+const { course_id } = Astro.params;
+
+if (!course_id) {
+  return Astro.redirect('/teacher/courses');
+}
+
+const course = await getOneCourse({ courseId: course_id });
+---
+<LayoutTeacher>
+  <HeaderTeacherDashboard title={course.title} subtitle="Manage modules for this course" />
+
+</LayoutTeacher>

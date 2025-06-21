@@ -1,0 +1,22 @@
+---
+import Section from '@/modules/core/ui/section.astro';
+import { CoursesTable } from '@/modules/courses/admin/components/CoursesTable';
+import { CoursesForm } from '@/modules/courses/admin/components/CoursesForm';
+import LayoutTeacher from '@/modules/core/layouts/LayoutTeacher.astro';
+import H1 from '@/modules/core/ui/h1.astro';
+import H3 from '@/modules/core/ui/h3.astro';
+import HeaderTeacherDashboard from '@/modules/core/components/HeaderTeacherDashboard.astro';
+---
+<LayoutTeacher>
+  <HeaderTeacherDashboard title="Courses" subtitle="Manage your courses and create new ones" />
+  <Section title="Existing courses" class="overflow-hidden">
+    <CoursesTable client:load>
+      <div slot="fallback" class="bg-gray-300 w-full h-36 animate-pulse rounded-lg">
+      </div>
+    </CoursesTable>
+  </Section>
+  <Section title="Create/Edit Course">
+    <CoursesForm client:load>
+    </CoursesForm>
+  </Section>
+</LayoutTeacher>
