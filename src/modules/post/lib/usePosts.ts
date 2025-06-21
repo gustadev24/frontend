@@ -1,4 +1,4 @@
-import type { Post } from '@/modules/core/types/posts';
+import type { Post } from '@/modules/post/types/post';
 import useSWR from 'swr';
 
 export const getOnePost = async ({
