@@ -1,6 +1,4 @@
-import { Roles } from '@/modules/core/lib/user';
-
-export type Role = (typeof Roles)[keyof typeof Roles];
+import type { Role } from '@/modules/auth/types/role';
 
 export interface User {
   id: number;
@@ -10,3 +8,7 @@ export interface User {
   role: Role;
   mfaEnabled: boolean;
 }
+
+export type UserRequired = {
+  user: User;
+};

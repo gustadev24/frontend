@@ -3,9 +3,15 @@ import LayoutTeacher from '@/modules/core/layouts/LayoutTeacher.astro';
 import H1 from '@/modules/core/ui/h1.astro';
 import PostsList from '@/modules/post/admin/components/postsList';
 import Section from '@/modules/core/ui/section.astro';
----
+import { getUser } from '@/modules/auth/lib/authServer';
 
-<LayoutTeacher>
+const user = await getUser();
+
+if (!user) {
+  return Astro.redirect('/auth/login');
+}
+---
+<LayoutTeacher user={user}>
   <H1>
     Posts
   </H1>

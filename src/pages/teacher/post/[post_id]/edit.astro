@@ -3,22 +3,23 @@ import LayoutTeacher from '@/modules/core/layouts/LayoutTeacher.astro';
 import H1 from '@/modules/core/ui/h1.astro';
 import EditPost from '@/modules/post/admin/components/editPost';
 import Section from '@/modules/core/ui/section.astro';
-
-type Props = {
-  post_id: string;
-};
+import { getUser } from '@/modules/auth/lib/authServer';
 
 export const prerender = false;
+
+const user = await getUser();
+
+if (!user) {
+  return Astro.redirect('/auth/login');
+}
 
 const { post_id } = Astro.params;
 
 if (!post_id) {
   return Astro.redirect('/dashboard/post');
 }
-
 ---
-
-<LayoutTeacher>
+<LayoutTeacher user={user}>
   <H1>
     Edit a post
   </H1>

@@ -1,9 +1,14 @@
 ---
+import type { UserRequired } from '@/modules/auth/types/user';
 import RootLayout from '@/modules/core/layouts/RootLayout.astro';
 import Header from '@/modules/core/layouts/header.astro';
+
+type Props = UserRequired;
+
+const { user }: Props = Astro.props;
 ---
 <RootLayout>
-  <Header />
+  <Header user={user} />
 	<main class="flex flex-col pb-20 items-center">
 		<slot />
 	</main>

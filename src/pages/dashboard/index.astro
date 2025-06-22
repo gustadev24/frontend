@@ -4,10 +4,15 @@ import Grades from '@/modules/courses/components/Grades';
 import LayoutStudent from '@/modules/core/layouts/LayoutStudent.astro';
 import Section from '@/modules/core/ui/section.astro';
 import H1 from '@/modules/core/ui/h1.astro';
-import { isAuthenticated } from '@/modules/auth/lib/authStore';
----
+import { getUser } from '@/modules/auth/lib/authServer';
 
-<LayoutStudent>
+const user = await getUser();
+
+if (!user) {
+  return Astro.redirect('/auth/login');
+}
+---
+<LayoutStudent user={user}>
   <H1>
     My Dashboard
   </H1>

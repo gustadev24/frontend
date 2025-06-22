@@ -1,9 +1,14 @@
 ---
+import type { UserRequired } from '@/modules/auth/types/user';
 import RootLayout from '@/modules/core/layouts/RootLayout.astro';
 import Lateralbar from '@/modules/core/layouts/lateralbar.astro';
+
+type Props = UserRequired;
+
+const { user } = Astro.props as Props;
 ---
 <RootLayout bodyClass="flex w-full">
-  <Lateralbar />
+  <Lateralbar user={user} />
 	<main class="pb-20 w-full pt-10">
 		<slot />
 	</main>

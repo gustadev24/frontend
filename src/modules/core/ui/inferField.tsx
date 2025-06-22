@@ -27,6 +27,7 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
 } from '@/modules/core/ui/input-otp';
+import { useMemo } from 'react';
 
 function InferItem<
   FieldName extends string,
@@ -60,30 +61,36 @@ function InferItem<
           } else if (props.type === SupportedFields.TEXTAREA) {
             return <Textarea {...props} />;
           } else if (props.type === SupportedFields.OTP) {
+            const leftSlots = useMemo(() => {
+              return Array.from(
+                { length: Math.floor(props.maxLength / 2) },
+                (_, i) => ({
+                  id: crypto.randomUUID(),
+                  index: i,
+                }),
+              );
+            }, [props.maxLength]);
+
+            const rightSlots = useMemo(() => {
+              return Array.from(
+                { length: Math.ceil(props.maxLength / 2) },
+                (_, i) => ({
+                  id: crypto.randomUUID(),
+                  index: i + Math.floor(props.maxLength / 2),
+                }),
+              );
+            }, [props.maxLength]);
+
             return (
               <InputOTP {...props}>
                 <InputOTPGroup>
-                  {Array.from<{ length: number }, { id: string }>(
-                    {
-                      length: Math.floor(props.maxLength / 2),
-                    },
-                    () => ({
-                      id: crypto.randomUUID(),
-                    }),
-                  ).map(({ id }, i) => (
+                  {leftSlots.map(({ id }, i) => (
                     <InputOTPSlot key={`input-otp-${id}-${i}`} index={i} />
                   ))}
                 </InputOTPGroup>
                 <InputOTPSeparator />
                 <InputOTPGroup>
-                  {Array.from<{ length: number }, { id: string }>(
-                    {
-                      length: Math.ceil(props.maxLength / 2),
-                    },
-                    () => ({
-                      id: crypto.randomUUID(),
-                    }),
-                  ).map(({ id }, i) => (
+                  {rightSlots.map(({ id }, i) => (
                     <InputOTPSlot
                       key={`input-otp-${id}-${i + Math.floor(props.maxLength / 2)}`}
                       index={i + Math.floor(props.maxLength / 2)}

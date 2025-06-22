@@ -1,10 +1,17 @@
 ---
+import { getUser } from '@/modules/auth/lib/authServer';
 import LayoutStudent from '@/modules/core/layouts/LayoutStudent.astro';
 import H1 from '@/modules/core/ui/h1.astro';
 import Section from '@/modules/core/ui/section.astro';
 import PostsList from '@/modules/post/components/postsList';
+
+const user = await getUser();
+
+if (!user) {
+  return Astro.redirect('/auth/login');
+}
 ---
-<LayoutStudent>
+<LayoutStudent user={user}>
   <H1>Posts for students</H1>
   <Section>
     <p class="text-gray-500">
