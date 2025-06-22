@@ -1,29 +1,10 @@
 ---
-import '@/styles/global.css';
-import '@fontsource-variable/lexend';
-import HeaderLogin from './headerLogin.astro';
+import RootLayout from '@/modules/core/layouts/RootLayout.astro';
+import HeaderLogin from '@/modules/core/layouts/headerLogin.astro';
 ---
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>StudyCentral</title>
-	</head>
-	<body class="m-auto max-w-7xl flex flex-col">
-	  <HeaderLogin />
-		<main class="flex flex-col items-center justify-center gap-y-12 flex-1 px-4">
-		  <slot />
-		</main>
-	</body>
-</html>
-
-<style>
-	html,
-	body {
-    width: 100%;
-		height: 100%;
-	}
-</style>
+<RootLayout>
+  <HeaderLogin />
+	<main class="flex flex-col items-center justify-center gap-y-12 flex-1 px-4">
+	  <slot />
+	</main>
+</RootLayout>

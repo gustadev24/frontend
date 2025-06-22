@@ -3,13 +3,19 @@ import LayoutTeacher from '@/modules/core/layouts/LayoutTeacher.astro';
 import H1 from '@/modules/core/ui/h1.astro';
 import AddPost from '@/modules/post/admin/components/addPost';
 import Section from '@/modules/core/ui/section.astro';
----
+import { getUser } from '@/modules/auth/lib/authServer';
 
-<LayoutTeacher>
+const user = await getUser();
+
+if (!user) {
+  return Astro.redirect('/auth/login');
+}
+---
+<LayoutTeacher user={user}>
   <H1>
     Add a new post
   </H1>
   <Section>
-    <AddPost client:only="react" />
+    <AddPost client:load />
   </Section>
 </LayoutTeacher>

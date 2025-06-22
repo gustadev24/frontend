@@ -5,9 +5,16 @@ import H1 from '@/modules/core/ui/h1.astro';
 import LayoutTeacher from '@/modules/core/layouts/LayoutTeacher.astro';
 import CourseOverview from '@/modules/courses/components/CourseOverview';
 import Reports from '@/modules/courses/components/Reports';
+import { getUser } from '@/modules/auth/lib/authServer';
+
+const user = await getUser();
+
+if (!user) {
+  return Astro.redirect('/auth/login');
+}
 ---
 
-<LayoutTeacher>
+<LayoutTeacher user={user}>
   <H1>
     Teacher Dashboard
   </H1>

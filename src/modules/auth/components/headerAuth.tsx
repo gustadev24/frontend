@@ -1,7 +1,4 @@
-import { useStore } from '@nanostores/react';
-import { $user, logout } from '../lib/authStore';
-import type { User } from '@/modules/core/types/user';
-import { useEffect } from 'react';
+import type { User } from '@/modules/auth/types/user';
 import { ChevronDown, LogOut } from 'lucide-react';
 
 import {
@@ -11,16 +8,23 @@ import {
 } from '@/modules/core/ui/popover';
 
 import { Button } from '@/modules/core/ui/button';
+import { actions } from 'astro:actions';
+import { navigate } from 'astro:transitions/client';
 
-function UnAuthenticated() {
-  useEffect(() => {
-    window.location.href = '/auth/login';
-  }, []);
-
-  return null;
+interface HeaderAuthProps {
+  user: User;
 }
 
-function Authenticated({ user }: { user: User }) {
+export default function HeaderAuth({ user }: HeaderAuthProps) {
+  const handleLogout = async () => {
+    const { error } = await actions.user.logout();
+    if (error) {
+      console.error('Error logging out:', error);
+      return;
+    } else {
+      navigate('/auth/login');
+    }
+  };
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -47,7 +51,7 @@ function Authenticated({ user }: { user: User }) {
             <Button
               variant="ghost"
               className="text-base w-full flex"
-              onClick={logout}
+              onClick={handleLogout}
             >
               <LogOut />
               <span className="flex-1 w-full">Cerrar Sesion</span>
@@ -57,16 +61,4 @@ function Authenticated({ user }: { user: User }) {
       </PopoverContent>
     </Popover>
   );
-}
-
-export default function HeaderAuth() {
-  const user = useStore($user);
-
-  if (!user) {
-    console.log('null');
-
-    return <UnAuthenticated />;
-  }
-
-  return <Authenticated user={user} />;
 }

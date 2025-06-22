@@ -3,15 +3,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { loginFormSchema, loginFormFields } from '@/modules/auth/lib/loginForm';
-import { useStore } from '@nanostores/react';
-import { $user, login } from '../lib/authStore';
-import { useEffect } from 'react';
 import { InferItem } from '@/modules/core/ui/inferField';
 import { Form, FormField } from '@/modules/core/ui/form';
+import { actions } from 'astro:actions';
+import { navigate } from 'astro:transitions/client';
 
 function LoginForm() {
-  const user = useStore($user);
-
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
@@ -20,19 +17,16 @@ function LoginForm() {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof loginFormSchema>) => {
-    login({
-      email: values.email,
-      password: values.password,
-    });
-    console.log(values);
-  };
-
-  useEffect(() => {
-    if (user) {
-      window.location.href = '/';
+  const onSubmit = async (values: z.infer<typeof loginFormSchema>) => {
+    const { data: user, error } = await actions.user.login(values);
+    if (error) {
+      form.setError('root', { message: error.message });
+      return;
     }
-  }, [user]);
+    if (user) {
+      navigate('/dashboard');
+    }
+  };
 
   return (
     <Form {...form}>

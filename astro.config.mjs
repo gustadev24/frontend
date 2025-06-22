@@ -7,13 +7,15 @@ import react from '@astrojs/react';
 
 import node from '@astrojs/node';
 
+import inoxToolsRequestNanostores from '@inox-tools/request-nanostores';
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
 
-  integrations: [react()],
+  integrations: [react(), inoxToolsRequestNanostores()],
 
   redirects: {
     '/': '/dashboard',

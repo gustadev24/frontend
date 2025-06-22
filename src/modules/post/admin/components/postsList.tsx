@@ -1,4 +1,4 @@
-import type { Post } from '@/modules/core/types/posts';
+import type { Post } from '@/modules/post/types/post';
 import { useAllPosts } from '../lib/usePosts';
 import { Link } from '@/modules/core/ui/link';
 
@@ -25,11 +25,11 @@ function PostItem({ post }: { post: Post }) {
         <p className="mt-2">{post.excerpt}</p>
       </div>
       <div className="flex flex-col gap-4">
-        <Link href={'/dashboard/post/' + post.id}>View Post</Link>
-        <Link href={'/teacher/post/edit/' + post.id} variant={'secondary'}>
+        <Link href={`/dashboard/post/${post.id}`}>View Post</Link>
+        <Link href={`/teacher/post/${post.id}/edit`} variant={'secondary'}>
           Edit Post
         </Link>
-        <Link href={'/teacher/post/delete/' + post.id} variant={'destructive'}>
+        <Link href={`/teacher/post/${post.id}/delete`} variant={'destructive'}>
           Delete Post
         </Link>
       </div>
