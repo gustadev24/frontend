@@ -1,7 +1,7 @@
 import { SupportedFields } from '@/modules/core/lib/field';
-import { RolesValues } from '@/modules/core/lib/user';
+import { RolesValues } from '@/modules/auth/lib/roles';
 import type { Field } from '@/modules/core/types/field';
-import type { Role } from '@/modules/core/types/user';
+import type { Role } from '@/modules/auth/types/role';
 import { z } from 'zod';
 
 export const registerFormSchema = z.object({
