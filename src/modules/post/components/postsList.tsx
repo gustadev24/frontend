@@ -1,5 +1,5 @@
-import type { Post } from '@/modules/core/types/posts';
-import { useAllPosts } from '../lib/usePosts';
+import type { Post } from '@/modules/post/types/post';
+import { useAllPosts } from '@/modules/post/lib/usePosts';
 
 function PostsListSkeleton() {
   return (

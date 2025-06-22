@@ -1,5 +1,5 @@
-import { Roles } from '@/modules/core/lib/user';
-import type { Role } from '@/modules/core/types/user';
+import { Roles } from '@/modules/auth/lib/roles';
+import type { Role } from '@/modules/auth/types/role';
 import { Button } from '@/modules/core/ui/button';
 import { memo } from 'react';
 

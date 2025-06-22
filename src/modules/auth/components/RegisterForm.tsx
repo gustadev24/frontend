@@ -8,7 +8,6 @@ import {
   FormLabel,
   FormMessage,
 } from '@/modules/core/ui/form';
-import { Input } from '@/modules/core/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -16,11 +15,10 @@ import {
   registerFormSchema,
   registerFormFields,
 } from '@/modules/auth/lib/registerForm';
-import { Roles } from '@/modules/core/lib/user';
-import RoleSelector from './RoleSelector';
-import type { Role } from '@/modules/core/types/user';
+import { Roles } from '@/modules/auth/lib/roles';
+import RoleSelector from '@/modules/auth/components/RoleSelector';
 import { InferItem } from '@/modules/core/ui/inferField';
-import { SupportedFields } from '@/modules/core/lib/field';
+import type { Role } from '@/modules/auth/types/role';
 
 function RegisterForm() {
   const form = useForm<z.infer<typeof registerFormSchema>>({

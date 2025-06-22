@@ -1,5 +1,5 @@
-import type { Post } from '@/modules/core/types/posts';
 import useSWR from 'swr';
+import type { Post } from '@/modules/post/types/post';
 
 const getMockPost = (id: string): Post => ({
   title: 'Introduction to TypeScript',
