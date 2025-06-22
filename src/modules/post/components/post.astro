@@ -1,4 +1,5 @@
 ---
+import '@/modules/post/lib/setupCopy.css';
 import { marked } from 'marked';
 import markedShiki from 'marked-shiki';
 import { codeToHtml } from 'shiki';
@@ -27,49 +28,6 @@ const content = await marked.use(
 ---
 <article set:html={content} class="prose text-pretty text-foreground mt-10 w-full max-w-none"/>
 <script>
-  const copyButtons = document.querySelectorAll('.highlighted-code .btn-copy');
-  copyButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const codeElement = button.parentElement?.querySelector('code');
-      if (codeElement) {
-        navigator.clipboard
-          .writeText(codeElement.textContent || '')
-          .then(() => {
-            button.textContent = 'Copied!';
-            setTimeout(() => {
-              button.textContent = 'Copy';
-            }, 2000);
-          })
-          .catch((err) => {
-            console.error('Failed to copy text: ', err);
-          });
-      }
-    });
-  });
+  import { setupCopy } from '@/modules/post/lib/setupCopy';
+  setupCopy();
 </script>
-<style is:inline>
-  // eslint-disable-next-line astro/no-unused-css-selector
-  .highlighted-code {
-    position: relative;
-    margin-bottom: 1.5rem;
-  }
-
-  // eslint-disable-next-line astro/no-unused-css-selector
-  .btn-copy {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    background-color: #2c3e50;
-    color: white;
-    border: none;
-    padding: 0.25rem 0.5rem;
-    cursor: pointer;
-    font-size: 0.875rem;
-    border-radius: 4px;
-  }
-
-  // eslint-disable-next-line astro/no-unused-css-selector
-  .btn-copy:hover {
-    background-color: #34495e;
-  }
-</style>
