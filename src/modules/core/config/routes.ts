@@ -10,6 +10,8 @@ import {
   IconMessage,
   IconMessageFilled,
   IconSchool,
+  IconVideo,
+  IconVideoFilled,
 } from '@tabler/icons-react';
 
 export const routesConfig = {
@@ -67,6 +69,12 @@ export const routesConfig = {
       iconSelect: IconMessageReportFilled,
       name: 'Reports',
       path: '/teacher/reports',
+    },
+    {
+      icon: IconVideo,
+      iconSelect: IconVideoFilled,
+      name: 'Videos',
+      path: '/teacher/videos',
     },
   ],
 };

@@ -6,4 +6,5 @@ export const SupportedFields = {
   SELECT: 'select',
   NUMBER: 'number',
   OTP: 'otp',
+  FILE: 'file',
 } as const;

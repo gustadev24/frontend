@@ -99,6 +99,17 @@ function InferItem<
                 </InputOTPGroup>
               </InputOTP>
             );
+          } else if (props.type === SupportedFields.FILE) {
+            return (
+              <Input 
+                type={props.type}
+                name={props.name}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  props.onChange(file);
+                }}
+              />
+            );
           } else {
             return (
               <Input

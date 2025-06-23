@@ -19,7 +19,8 @@ export type Field<T extends string> = BaseField<T> &
           | typeof SupportedFields.PASSWORD
           | typeof SupportedFields.TEXTAREA
           | typeof SupportedFields.TEXT
-          | typeof SupportedFields.NUMBER;
+          | typeof SupportedFields.NUMBER
+          | typeof SupportedFields.FILE;
       }
     | {
         type: typeof SupportedFields.SELECT;
