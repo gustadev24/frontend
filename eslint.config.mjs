@@ -1,6 +1,6 @@
 import tsParser from '@typescript-eslint/parser';
 import eslintPluginAstro from 'eslint-plugin-astro';
-import eslintPluginPrettier from 'eslint-plugin-prettier/recommended';
+import eslintPluginPrettier from 'eslint-config-prettier';
 import { defineConfig } from 'eslint/config';
 import tsEslint from 'typescript-eslint';
 
