@@ -1,6 +1,6 @@
 import { Link } from '@/modules/core/ui/link';
-import { useCourses } from '../hooks/useCourses';
-import type { CourseProps } from '@/modules/core/types/courses';
+import { useCourses } from '@/modules/courses/lib/useCourses';
+import type { Course as CourseProps } from '@/modules/courses/types/courses';
 
 function CourseSkeleton() {
   return (
@@ -18,15 +18,19 @@ function CourseSkeleton() {
 function Course({
   description,
   imageUrl,
-  link,
   title,
-}: Omit<CourseProps, 'status' | 'date'>) {
+  id,
+}: Omit<CourseProps, 'status' | 'date' | 'modules'>) {
   return (
     <div className="grid grid-cols-2">
       <div>
         <h3 className="font-bold">{title}</h3>
         <p className="text-sm">{description}</p>
-        <Link href={link} className="mt-3" variant={'secondary'}>
+        <Link
+          href={`/dashboard/courses/${id}`}
+          className="mt-3"
+          variant={'secondary'}
+        >
           View Course
         </Link>
       </div>
@@ -56,10 +60,10 @@ export default function Courses() {
     <div className="flex flex-col gap-10">
       {courses.map((course) => (
         <Course
-          key={course.title}
+          key={course.id}
+          id={course.id}
           title={course.title}
           description={course.description}
-          link={course.link}
           imageUrl={course.imageUrl}
         />
       ))}

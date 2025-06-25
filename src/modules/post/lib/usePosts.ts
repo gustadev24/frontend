@@ -39,6 +39,10 @@ Puedes aplicar estilos fácilmente:
 > Este es un ejemplo de cita. Puedes usarlo para destacar ideas o fragmentos de otros autores.
 
 ### Bloques de código
+\`\`\`javascript
+const greeting = 'Hello, Javascript!';
+console.log(greeting);
+\`\`\`
 `,
   module: {
     courseId: 1,

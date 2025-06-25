@@ -1,5 +1,5 @@
-import type { Post } from '@/modules/core/types/posts';
 import useSWR from 'swr';
+import type { Post } from '@/modules/post/types/post';
 
 const getMockPost = (id: string): Post => ({
   title: 'Introduction to TypeScript',
@@ -38,6 +38,10 @@ Puedes aplicar estilos fácilmente:
 > Este es un ejemplo de cita. Puedes usarlo para destacar ideas o fragmentos de otros autores.
 
 ### Bloques de código
+\`\`\`javascript
+const greeting = 'Hello, Javascript!';
+console.log(greeting);
+\`\`\`
 `,
   module: {
     title: 'TypeScript Basics',

@@ -1,4 +1,4 @@
-import type { GradeProps } from '@/modules/core/types/grades';
+import type { Grade as GradeProps } from '@/modules/core/types/grades';
 import useSWR from 'swr';
 // import { getMyGrades } from '@/modules/core/lib/api';
 

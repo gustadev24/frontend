@@ -7,6 +7,10 @@ import react from '@astrojs/react';
 
 import node from '@astrojs/node';
 
+import vercel from '@astrojs/vercel';
+
+const isVercel = process.env.ASTRO_DEPLOYMENT_TARGET === 'vercel';
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -19,7 +23,9 @@ export default defineConfig({
     '/': '/dashboard',
   },
 
-  adapter: node({
-    mode: 'standalone',
-  }),
+  adapter: isVercel
+    ? vercel()
+    : node({
+        mode: 'standalone',
+      }),
 });

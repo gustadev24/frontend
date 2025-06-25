@@ -1,7 +1,13 @@
 ---
 import '@/styles/global.css';
 import '@fontsource-variable/lexend';
-import Header from '@/modules/core/layouts/header.astro';
+import { ClientRouter } from 'astro:transitions';
+import { cn } from '@/modules/core/lib/utils';
+type Props = {
+  title?: string;
+  bodyClass?: string;
+};
+const { title = 'Study Central', bodyClass } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -10,13 +16,11 @@ import Header from '@/modules/core/layouts/header.astro';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>StudyCentral</title>
+		<ClientRouter />
+		<title>{title}</title>
 	</head>
-	<body class="m-auto max-w-7xl">
-	  <Header />
-		<main class="flex flex-col pb-20 items-center">
-		  <slot />
-		</main>
+	<body class:list={cn('m-auto max-w-7xl relative', bodyClass)}>
+		 <slot />
 	</body>
 </html>
 

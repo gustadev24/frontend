@@ -1,12 +1,18 @@
 ---
 import Courses from '@/modules/courses/components/Courses';
 import Grades from '@/modules/courses/components/Grades';
-import Layout from '@/modules/core/layouts/Layout.astro';
+import LayoutStudent from '@/modules/core/layouts/LayoutStudent.astro';
 import Section from '@/modules/core/ui/section.astro';
 import H1 from '@/modules/core/ui/h1.astro';
----
+import { getUser } from '@/modules/auth/lib/authServer';
 
-<Layout>
+const user = await getUser();
+
+if (!user) {
+  return Astro.redirect('/auth/login');
+}
+---
+<LayoutStudent user={user}>
   <H1>
     My Dashboard
   </H1>
@@ -16,4 +22,4 @@ import H1 from '@/modules/core/ui/h1.astro';
   <Section title="Grades">
     <Grades client:visible/>
   </Section>
-</Layout>
+</LayoutStudent>

@@ -1,41 +1,5 @@
-import { persistentAtom } from '@nanostores/persistent';
-import { type User } from '@/modules/core/types/user';
-import { Roles } from '@/modules/core/lib/user';
-export const $user = persistentAtom<User | null>('user', null, {
-  encode: JSON.stringify,
-  decode: JSON.parse,
-});
+import { atom } from 'nanostores';
+import { type User } from '@/modules/auth/types/user';
+import { shared } from '@it-astro:request-nanostores';
 
-export function login({
-  email,
-  password,
-}: {
-  email: string;
-  password: string;
-}) {
-  const user: User = {
-    id: 1,
-    name: 'Yenaro Noa Camino',
-    email,
-    photo:
-      'https://ynoa-uploader.ynoacamino.site/uploads/1750016704_ACg8ocLnHIiNMcd-ltRxMAQZ6Qo1hKAeSyZsktQKBp5kNltpKDzlg4_q=s96-c.webp',
-    role: Roles.Student,
-    mfaEnabled: false,
-  };
-
-  console.log(password);
-
-  $user.set(user);
-}
-
-export function logout() {
-  $user.set(null);
-}
-
-export function isAuthenticated(): boolean {
-  return !!$user.get();
-}
-
-export function getUser(): User | null {
-  return $user.get();
-}
+export const $user = shared('user', atom<User | undefined>());

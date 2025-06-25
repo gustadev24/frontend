@@ -1,0 +1,21 @@
+---
+import LayoutTeacher from '@/modules/core/layouts/LayoutTeacher.astro';
+import Section from '@/modules/core/ui/section.astro';
+import { VideosForm } from '@/modules/videos/admin/components/VideosForm';
+import { getUser } from '@/modules/auth/lib/authServer';
+import HeaderTeacherDashboard from '@/modules/core/components/HeaderTeacherDashboard.astro';
+
+const user = await getUser();
+
+if (!user) {
+  return Astro.redirect('/auth/login');
+}
+---
+
+<LayoutTeacher user={user}>
+    <HeaderTeacherDashboard title="Video Upload Manager"/>
+    <Section >
+        <VideosForm client:load>
+        </VideosForm>
+    </Section>
+</LayoutTeacher>
