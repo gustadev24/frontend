@@ -1,0 +1,33 @@
+---
+import '@/modules/post/lib/setupCopy.css';
+import { marked } from 'marked';
+import markedShiki from 'marked-shiki';
+import { codeToHtml } from 'shiki';
+
+type Props = {
+  rawContent: string;
+};
+const { rawContent } = Astro.props;
+
+const content = await marked.use(
+  markedShiki({
+    async highlight(code, lang) {
+      return await codeToHtml(code, {
+        lang,
+        theme: 'github-dark',
+      });
+    },
+    container: `<figure class="highlighted-code">
+    <button class="btn-copy">Copy</button>
+    %s
+    </figure>`
+  }),
+
+).parse(rawContent);
+
+---
+<article set:html={content} class="prose text-pretty text-foreground mt-10 w-full max-w-none"/>
+<script>
+  import { setupCopy } from '@/modules/post/lib/setupCopy';
+  setupCopy();
+</script>

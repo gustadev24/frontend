@@ -1,0 +1,39 @@
+---
+import LayoutStudent from '@/modules/core/layouts/LayoutStudent.astro';
+import Section from '@/modules/core/ui/section.astro';
+import Post from '@/modules/post/components/post.astro';
+import { getOnePost } from '@/modules/post/lib/usePosts';
+import { getUser } from '@/modules/auth/lib/authServer';
+
+export const prerender = false;
+
+const user = await getUser();
+
+if (!user) {
+  return Astro.redirect('/auth/login');
+}
+
+const { post_id } = Astro.params;
+
+if (!post_id) {
+  return Astro.redirect('/dashboard/post');
+}
+
+const post = await getOnePost({ postId: post_id });
+
+---
+<LayoutStudent user={user}>
+  <Section>
+    <header>
+      <h1 class="text-3xl font-bold mb-4">{post.module.title}</h1>
+      <span class="text-sm text-foreground/80">
+        {post.chapter}: {post.title} by {post.author}
+      </span>
+    </header>
+    <Post server:defer rawContent={post.content}>
+      <div slot="fallback">
+        Loading...
+      </div>
+    </Post>
+  </Section>
+</LayoutStudent>

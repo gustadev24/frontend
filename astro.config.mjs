@@ -3,9 +3,29 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
+import react from '@astrojs/react';
+
+import node from '@astrojs/node';
+
+import vercel from '@astrojs/vercel';
+
+const isVercel = process.env.ASTRO_DEPLOYMENT_TARGET === 'vercel';
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+  },
+
+  integrations: [react()],
+
+  redirects: {
+    '/': '/dashboard',
+  },
+
+  adapter: isVercel
+    ? vercel()
+    : node({
+        mode: 'standalone',
+      }),
 });

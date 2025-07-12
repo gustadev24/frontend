@@ -1,0 +1,10 @@
+---
+import RootLayout from '@/modules/core/layouts/RootLayout.astro';
+import HeaderLogin from '@/modules/core/layouts/headerLogin.astro';
+---
+<RootLayout>
+  <HeaderLogin />
+	<main class="flex flex-col items-center justify-center gap-y-12 flex-1 px-4">
+	  <slot />
+	</main>
+</RootLayout>

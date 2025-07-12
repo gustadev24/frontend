@@ -1,6 +1,6 @@
 import tsParser from '@typescript-eslint/parser';
 import eslintPluginAstro from 'eslint-plugin-astro';
-import eslintPluginPrettier from 'eslint-plugin-prettier/recommended';
+import eslintPluginPrettier from 'eslint-config-prettier';
 import { defineConfig } from 'eslint/config';
 import tsEslint from 'typescript-eslint';
 
@@ -27,7 +27,7 @@ export default defineConfig([
     rules: {
       quotes: ['error', 'single'],
       'astro/no-exports-from-components': 'error',
-      'astro/no-set-html-directive': 'warn',
+      'astro/no-set-html-directive': 'off',
       'astro/no-set-text-directive': 'error',
       'astro/no-unused-css-selector': 'warn',
       'astro/prefer-class-list-directive': 'error',
